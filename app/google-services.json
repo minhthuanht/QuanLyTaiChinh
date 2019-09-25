@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "704576347067",
+    "firebase_url": "https://quanlytaichinh-147c9.firebaseio.com",
+    "project_id": "quanlytaichinh-147c9",
+    "storage_bucket": "quanlytaichinh-147c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704576347067:android:b9a5b5951a378530",
+        "android_client_info": {
+          "package_name": "com.minhthuanht.quanlytaichinh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704576347067-6jvudo2a9lce8gm1ck7t9q603lec035g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.minhthuanht.quanlytaichinh",
+            "certificate_hash": "5cebeb59ca1cac6287bf4505c48b1b278d39cf24"
+          }
+        },
+        {
+          "client_id": "704576347067-asa5is12u4mjtp9sdvtse4jgnb756t3f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAlTY0rpiqkLLCrS9ZMvN5gKgBnCoYmj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704576347067-asa5is12u4mjtp9sdvtse4jgnb756t3f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

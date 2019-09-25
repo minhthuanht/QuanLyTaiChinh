@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/base_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackgroundItem">
+
+                    <ImageView
+                        android:id="@+id/image_money_type"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_attach_money_black_24dp" />
+
+                    <com.minhthuanht.quanlytaichinh.view.CurrencyEditText
+                        android:id="@+id/txtTransactionMoney"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@id/image_money_type"
+                        android:hint="0đ"
+                        android:inputType="numberDecimal" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackgroundItem">
+
+                    <ImageView
+                        android:id="@+id/imgTransactionCategory"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_help_black_24dp" />
+
+                    <EditText
+                        android:id="@+id/txtTransactionCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@id/imgTransactionCategory"
+                        android:focusable="false"
+                        android:hint="Chọn loại giao dịch" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackgroundItem">
+
+                    <ImageView
+                        android:id="@+id/imgTransactionNote"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_event_note_black_24dp" />
+
+                    <EditText
+                        android:id="@+id/txtTransactionNote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@id/imgTransactionNote"
+                        android:hint="Ghi chú"
+                        android:inputType="text"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackgroundItem">
+
+                    <ImageView
+                        android:id="@+id/image_transaction_date"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_event_black_24dp" />
+
+                    <EditText
+                        android:id="@+id/txtTransactionDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@id/image_transaction_date"
+                        android:focusable="false"
+                        android:text="Hôm nay" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackgroundItem">
+
+                    <ImageView
+                        android:id="@+id/image_transaction_wallet"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_account_balance_wallet_black_24dp" />
+
+                    <EditText
+                        android:id="@+id/txtTransactionWallet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@id/image_transaction_wallet"
+                        android:focusable="false"
+                        android:hint="Chọn ví" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_more_transaction_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackgroundItem"
+                    android:weightSum="2">
+
+                    <ImageView
+                        android:id="@+id/imgChoosePicture"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:focusable="true"
+                        android:src="@drawable/ic_image" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center"
+                        android:background="@color/colorBackgroundItemDark" />
+
+                    <ImageView
+                        android:id="@+id/imgCapturePicture"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:focusable="true"
+                        android:src="@drawable/ic_camera" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img_preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:focusable="true" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

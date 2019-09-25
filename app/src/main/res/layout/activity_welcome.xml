@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_button_calculator_green_normal"
+    tools:context=".WelcomeActivity">
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:id="@+id/spinerLanguage"
+
+        >
+    </Spinner>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinerLanguage"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/icon"
+        android:id="@+id/imageView"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_centerInParent="true"
+        android:text="Quản Lý Tài Chính"
+        android:layout_marginTop="20dp"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:textAlignment="inherit"
+
+        android:id="@+id/textName"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/textName"
+        android:layout_centerInParent="true"
+        android:text="Mẹo đầu tiên: Đăng nhập để truy cập vào dữ liệu của bạn trên tất cả các thiết bị"
+        android:textColor="#fff"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/text2"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUseFirstApp"
+        android:layout_above="@+id/btnUsedApp"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="Lần Đầu Sử Dụng Ứng Dụng"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/welcome_activity_background"
+        android:background="#fff"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUsedApp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:text="Đã Sử Dụng Ứng Dụng"
+        android:background="@null"
+        android:textColor="#fff"/>
+</RelativeLayout>

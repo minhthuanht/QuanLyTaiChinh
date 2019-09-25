@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.minhthuanht.quanlytaichinh">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".transaction.activity.EditTransactionActivity"
+            android:label="@string/edit_transaction"></activity>
+        <activity
+            android:name=".transaction.activity.DetailTransactionActivity"
+            android:label="@string/detail_transaction" />
+        <activity
+            android:name=".category.activity.SelectCategoryActivity"
+            android:label="@string/select_category"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".transaction.activity.AddTransactionActivity"
+            android:label="@string/add_transaction"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".wallet.FinishUpWallet"
+            android:theme="@style/AppTheme.ActionBarSetting" />
+        <activity
+            android:name=".wallet.BalanceActivity"
+            android:theme="@style/AppTheme.ActionBarSetting" />
+        <activity
+            android:name=".wallet.ChooseCurrencyActivity"
+            android:theme="@style/AppTheme.ActionBarSetting" />
+        <activity
+            android:name=".wallet.AddWalletActivity"
+            android:theme="@style/AppTheme.ActionBarSetting" />
+        <activity android:name=".account.activity.ForgotPasswordActivity" />
+        <activity
+            android:name=".account.activity.LoginActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".account.activity.RegistrationActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".WelcomeActivity"
+            android:theme="@style/AppTheme.ActionBarSetting">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>

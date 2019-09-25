@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_transaction"
+            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
+            android:title="Sổ giao dịch" />
+        <item
+            android:id="@+id/nav_chart"
+            android:icon="@drawable/ic_insert_chart_black_24dp"
+            android:title="Xu hướng" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/action_settings" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Kế hoạch">
+            <menu>
+                <item
+                    android:id="@+id/nav_budget"
+                    android:icon="@drawable/ic_bk_budget"
+                    android:title="Ngân sách" />
+
+                <item
+                    android:id="@+id/nav_periodic_transaction"
+                    android:icon="@drawable/ic_update_black"
+                    android:title="Giao dịch định kỳ" />
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Giao tiếp">
+            <menu>
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="Chia sẻ" />
+                <item
+                    android:id="@+id/nav_send"
+                    android:icon="@drawable/ic_menu_send"
+                    android:title="Gửi" />
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Thêm">
+            <menu>
+                <item
+                    android:id="@+id/nav_account"
+                    android:icon="@drawable/ic_account_circle_black_24dp"
+                    android:title="Thông tin tài khoản">
+
+                </item>
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_logoutrenew_black_24dp"
+                    android:title="Đăng xuất">
+
+                </item>
+            </menu>
+        </item>
+
+    </group>
+
+</menu>

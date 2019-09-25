@@ -1,0 +1,112 @@
+<resources>
+    <string name="app_name">Quản Lý Tài Chính</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Cài đặt</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string-array name="language">
+        <item>Tiếng Việt</item>
+    </string-array>
+    <string-array name="spinnerItems">
+        <item>Tất cả các khoản</item>
+        <item>Khoản chi</item>
+        <item>Khoản thu</item>
+        <item>Thu nhập ròng</item>
+    </string-array>
+    <string-array name="spinnerSelect">
+        <item>Theo nhóm</item>
+        <item>Theo thời gian</item>
+    </string-array>
+    <string-array name="curency">
+        <item>Việt Nam Đồng</item>
+    </string-array>
+
+    <string name="title_activity_login">Log in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="show_error_empty">Không được để trống</string>
+    <string name="show_error_email_illegal">Định dạng email không hợp lệ</string>
+    <string name="show_error_length_password">Độ dài mật khẩu phải lớn hơn hoặc bằng 8 ký tự</string>
+    <string name="show_error_connect_internet">Bạn cần kết nối Internet</string>
+    <string name="show_title_prodialog">Thông báo:</string>
+    <string name="show_title_registration">Đang đăng ký, vui lòng chờ trong giây lát...</string>
+    <string name="show_complete_registration">Đăng ký thành công</string>
+    <string name="show_error_registration_fail">Đăng ký không thành công</string>
+    <string name="show_notification_sent_change_password_to_email">Đã gửi đường dẫn thay đổi mật khẩu đến email của bạn</string>
+    <string name="show_notification_send_email">Email đã được gửi đến tài khoản của bạn</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="future_month">Tương lai</string>
+
+    <!-- transaction list periods -->
+    <string name="all_transaction">Tất cả giao dịch</string>
+    <string name="all_time">Tất cả thời gian</string>
+    <string name="today">Hôm nay</string>
+    <string name="last7days">7 ngày trước</string>
+    <string name="last15days">2 tuần trước</string>
+    <string name="last30days">Last 30 Days</string>
+    <string name="last_month">Tháng trước</string>
+    <string name="last3months">3 tháng trước</string>
+    <string name="last6months">6 tháng trước</string>
+    <string name="current_month">Tháng này</string>
+    <string name="last_year">Năm trước</string>
+    <string name="current_year">Năm nay</string>
+    <string name="future_transactions">Tương lai</string>
+    <string name="language_vietnamese" translatable="false">Tiếng Việt</string>
+    <string name="language_vietnamese_code" translatable="false">vi</string>
+
+    <string name="thismonth">Tháng này</string>
+    <string name="thisquarter">Quý này</string>
+    <string name="thisweek">Tuần này</string>
+    <string name="thisyear">Năm nay</string>
+    <string name="time">Thời lượng</string>
+    <string name="time_empty">Chọn khoảng thời gian</string>
+    <string name="time_from">Khoảng thời gian</string>
+    <string name="time_mode_interest">Loại thời gian</string>
+    <string name="next_month">Tháng sau</string>
+    <string name="next_web">Tiếp</string>
+    <string name="nextmonth">Tháng tới</string>
+    <string name="nextquarter">Quý tới</string>
+    <string name="nextweek">Tuần tới</string>
+    <string name="nextyear">Năm tới</string>
+    <string name="add_budget">Thêm Ngân Sách</string>
+    <string name="remain_prefix">Còn</string>
+    <string name="notification_system_developing">Hệ thống đang phát triển</string>
+    <string name="add_transaction">Thêm giao dịch</string>
+    <string name="select_category">Chọn nhóm</string>
+    <string name="date_today">Hôm nay</string>
+    <string name="select_wallet">Chọn ví của bạn</string>
+    <string name="complete">Complete</string>
+    <string name="add_transaction_complete">AddTransactionActivityComplete</string>
+    <string name="feature_developing">Tính năng đang phát triển</string>
+    <string name="show_error_password_not_coincidence">Mật khẩu nhập lại không đúng, vui lòng nhập lại</string>
+    <string name="change_password_not_complete">Thay đổi mật khẩu không thành công</string>
+    <string name="not_complete_change_password">Thay đổi mật khẩu không thành công, vui lòng đăng nhập lại để thực hiện thao tác này!!!</string>
+    <string name="change_password_complete">Thay đổi mật khẩu thành công, vui lòng đăng nhập lại</string>
+    <string name="password_current_incorrect">Mật khẩu hiện tại không đúng</string>
+    <string name="detail_transaction">Chi tiết giao dịch</string>
+    <string name="edit_transaction">Thay đổi giao dịch</string>
+    <string name="transaction_book">Sổ giao dịch</string>
+    <string name="titile_notification">Thông báo</string>
+    <string name="notification_wait">Vui lòng đợi trong giây lát...</string>
+    <string name="information_account">Thông tin tài khoản</string>
+    <string name="change_password">Thay đổi mật khẩu</string>
+    <string name="over_view_month">Tổng quan tháng</string>
+</resources>
