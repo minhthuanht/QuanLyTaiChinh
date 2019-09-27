@@ -19,6 +19,7 @@ public class CategoriesDAOimpl implements ICategoriesDAO {
     private static final String COLUMN_CATEGORY_TYPE = "type";
     private static final String COLUMN_CATEGORY_CATEGORY = "category";
     private static final String COLUMN_CATEGORY_ICON = "icon";
+    private static final String COLUMN_CATEGORY_PARENTID = "parentId";
 
     private DBHelper mDBHelper;
 
@@ -38,8 +39,9 @@ public class CategoriesDAOimpl implements ICategoriesDAO {
         cv.put(COLUMN_CATEGORY_TYPE, category.getCategoryType().getValue());
         cv.put(COLUMN_CATEGORY_CATEGORY, category.getCategory());
         cv.put(COLUMN_CATEGORY_ICON, category.getCategoryIcon());
+//        cv.put(COLUMN_CATEGORY_PARENTID, category.getCategoryParentId());
 
-        int id = (int) db.insert(TABLE_CATEGORY_NAME, null, cv);
+        int id = (int) db.insert(TABLE_CATEGORY_NAME, COLUMN_CATEGORY_PARENTID, cv);
         db.close();
         return id != -1;
     }
@@ -54,6 +56,7 @@ public class CategoriesDAOimpl implements ICategoriesDAO {
         cv.put(COLUMN_CATEGORY_TYPE, category.getCategoryType().getValue());
         cv.put(COLUMN_CATEGORY_CATEGORY, category.getCategory());
         cv.put(COLUMN_CATEGORY_ICON, category.getCategoryIcon());
+//        cv.put(COLUMN_CATEGORY_PARENTID, category.getCategoryParentId());
 
         db.update(TABLE_CATEGORY_NAME, cv, COLUMN_CATEGORY_ID + " =? ",
                 new String[]{String.valueOf(category.getCategoryID())});
@@ -89,8 +92,9 @@ public class CategoriesDAOimpl implements ICategoriesDAO {
                 Category category = new Category();
                 category.setCategoryID(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_ID)));
                 category.setCategoryType(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_TYPE)));
-                category.getCategory(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_CATEGORY)));
+                category.setCategory(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_CATEGORY)));
                 category.setCategoryIcon(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_ICON)));
+                category.setCategoryParentId(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_PARENTID)));
 
                 categories.add(category);
             }
@@ -119,8 +123,9 @@ public class CategoriesDAOimpl implements ICategoriesDAO {
                 Category category = new Category();
                 category.setCategoryID(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_ID)));
                 category.setCategoryType(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_TYPE)));
-                category.getCategory(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_CATEGORY)));
+                category.setCategory(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_CATEGORY)));
                 category.setCategoryIcon(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_ICON)));
+                category.setCategoryParentId(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_PARENTID)));
 
                 categories.add(category);
             }
@@ -149,14 +154,41 @@ public class CategoriesDAOimpl implements ICategoriesDAO {
             Category category = new Category();
             category.setCategoryID(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_ID)));
             category.setCategoryType(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_TYPE)));
-            category.getCategory(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_CATEGORY)));
+            category.setCategory(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_CATEGORY)));
             category.setCategoryIcon(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_ICON)));
+            category.setCategoryParentId(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_PARENTID)));
 
             cursor.close();
             db.close();
 
             return category;
         }
+        return null;
+    }
+
+    @Override
+    public Category getCategoryByName(String name) {
+
+        SQLiteDatabase db = mDBHelper.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_CATEGORY_NAME + " WHERE " + COLUMN_CATEGORY_CATEGORY + " =? ";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(name)});
+
+        if (cursor != null && cursor.getCount() > 0) {
+
+            cursor.moveToFirst();
+            Category category = new Category();
+            category.setCategoryID(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_ID)));
+            category.setCategoryType(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_TYPE)));
+            category.setCategory(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_CATEGORY)));
+            category.setCategoryIcon(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_ICON)));
+            category.setCategoryParentId(cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY_PARENTID)));
+
+            cursor.close();
+            db.close();
+            return category;
+
+        }
+
         return null;
     }
 

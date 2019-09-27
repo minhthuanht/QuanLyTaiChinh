@@ -18,7 +18,7 @@ import com.minhthuanht.quanlytaichinh.account.activity.LoginActivity;
 import com.minhthuanht.quanlytaichinh.account.activity.RegistrationActivity;
 import com.minhthuanht.quanlytaichinh.implementDAO.IWalletsDAO;
 import com.minhthuanht.quanlytaichinh.implementDAO.WalletsDAOimpl;
-import com.minhthuanht.quanlytaichinh.wallet.ChooseCurrencyActivity;
+import com.minhthuanht.quanlytaichinh.wallet.activity.ChooseCurrencyActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 

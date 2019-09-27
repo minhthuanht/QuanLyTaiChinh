@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.minhthuanht.quanlytaichinh.R;
-import com.minhthuanht.quanlytaichinh.adapter.CategoryItemAdapter;
+import com.minhthuanht.quanlytaichinh.category.adapter.CategoryItemAdapter;
 import com.minhthuanht.quanlytaichinh.model.Category;
 
 import java.util.ArrayList;

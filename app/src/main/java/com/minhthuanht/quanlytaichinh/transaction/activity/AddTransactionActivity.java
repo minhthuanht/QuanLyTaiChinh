@@ -7,7 +7,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -23,7 +22,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.minhthuanht.quanlytaichinh.R;
-import com.minhthuanht.quanlytaichinh.adapter.WalletListAdapter;
+import com.minhthuanht.quanlytaichinh.wallet.adapter.WalletListAdapter;
 import com.minhthuanht.quanlytaichinh.category.activity.SelectCategoryActivity;
 import com.minhthuanht.quanlytaichinh.implementDAO.ITransactionsDAO;
 import com.minhthuanht.quanlytaichinh.implementDAO.IWalletsDAO;

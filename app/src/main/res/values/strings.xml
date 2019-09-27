@@ -18,10 +18,10 @@
         <item>Tiếng Việt</item>
     </string-array>
     <string-array name="spinnerItems">
-        <item>Tất cả các khoản</item>
         <item>Khoản chi</item>
         <item>Khoản thu</item>
-        <item>Thu nhập ròng</item>
+        <item>Tất cả các khoản</item>
+        <!--<item>Thu nhập ròng</item>-->
     </string-array>
     <string-array name="spinnerSelect">
         <item>Theo nhóm</item>

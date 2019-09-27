@@ -1,4 +1,4 @@
-package com.minhthuanht.quanlytaichinh.adapter;
+package com.minhthuanht.quanlytaichinh.wallet.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

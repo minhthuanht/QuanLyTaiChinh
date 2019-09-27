@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".overviewtransaction.FragmentTendency">
+    tools:context=".overviewtransaction.fragment.FragmentTendency">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -131,6 +131,7 @@
                 android:layout_below="@id/card_view1"
                 android:layout_marginTop="20dp"
                 android:foreground="?android:attr/selectableItemBackground"
+                android:layout_marginBottom="20dp"
                 card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="3dp">
 

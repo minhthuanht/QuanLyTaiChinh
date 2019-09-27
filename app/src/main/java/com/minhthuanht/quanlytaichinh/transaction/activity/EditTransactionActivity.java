@@ -3,11 +3,9 @@ package com.minhthuanht.quanlytaichinh.transaction.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -16,15 +14,12 @@ import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.minhthuanht.quanlytaichinh.R;
-import com.minhthuanht.quanlytaichinh.adapter.WalletListAdapter;
 import com.minhthuanht.quanlytaichinh.category.activity.SelectCategoryActivity;
 import com.minhthuanht.quanlytaichinh.implementDAO.ITransactionsDAO;
 import com.minhthuanht.quanlytaichinh.implementDAO.IWalletsDAO;
@@ -37,12 +32,10 @@ import com.minhthuanht.quanlytaichinh.model.Wallet;
 import com.minhthuanht.quanlytaichinh.view.CurrencyEditText;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.PriorityQueue;
 
 public class EditTransactionActivity extends AppCompatActivity {
 

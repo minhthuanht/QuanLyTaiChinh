@@ -1,5 +1,6 @@
-package com.minhthuanht.quanlytaichinh.overviewtransaction;
+package com.minhthuanht.quanlytaichinh.overviewtransaction.fragment;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.os.Parcelable;
+
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +18,16 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LegendEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.minhthuanht.quanlytaichinh.R;
 import com.minhthuanht.quanlytaichinh.model.Transaction;
 import com.minhthuanht.quanlytaichinh.view.CurrencyTextView;
@@ -90,6 +102,42 @@ public class OVTransactionMonth extends Fragment {
     private List<Transaction> mItems = new ArrayList<>();
 
 
+    private List<Float> mYDataEx = new ArrayList<>();
+
+    private List<String> mXDataEx = new ArrayList<>();
+
+    private List<Float> mYDataIn = new ArrayList<>();
+
+    private List<String> mXDataIn = new ArrayList<>();
+
+    private final OnChartValueSelectedListener mPiechartExListener = new OnChartValueSelectedListener() {
+        @Override
+        public void onValueSelected(Entry e, Highlight h) {
+
+//            showItemSelect(e, h, mYDataEx, mXDataEx);
+
+
+        }
+
+        @Override
+        public void onNothingSelected() {
+
+        }
+    };
+
+    private final OnChartValueSelectedListener mPiechartInListener = new OnChartValueSelectedListener() {
+        @Override
+        public void onValueSelected(Entry e, Highlight h) {
+
+//            showItemSelect(e, h, mYDataIn, mXDataIn);
+        }
+
+        @Override
+        public void onNothingSelected() {
+
+        }
+    };
+
     public OVTransactionMonth() {
         // Required empty public constructor
     }
@@ -145,7 +193,35 @@ public class OVTransactionMonth extends Fragment {
         mTradingInMin = view.findViewById(R.id.txtTrandingInMin);
 
         mPiechartEx = view.findViewById(R.id.piechartExpenses);
+
+        mPiechartEx.setRotationEnabled(true);
+        mPiechartEx.getDescription().setText("Biểu đồ thống kê giao dịch");
+        mPiechartEx.setHoleRadius(35f);
+        mPiechartEx.setTransparentCircleAlpha(0);
+        mPiechartEx.setCenterText("Khoản chi");
+        mPiechartEx.setCenterTextSize(10);
+        mPiechartEx.setDrawEntryLabels(true);
+
+        mPiechartEx.setDrawSliceText(false); // To remove slice text
+        mPiechartEx.setDrawMarkers(false); // To remove markers when click
+        mPiechartEx.setDrawEntryLabels(false); // To remove labels from piece of pie
+        mPiechartEx.getDescription().setEnabled(false);
+
         mPiechartIn = view.findViewById(R.id.piechartIncome);
+        mPiechartEx.getDescription().setText("Biểu đồ thống kê giao dịch");
+        ;
+        mPiechartIn.setHoleRadius(35f);
+        mPiechartIn.setTransparentCircleAlpha(0);
+        mPiechartIn.setCenterText("Khoản thu");
+        mPiechartIn.setCenterTextSize(10);
+        mPiechartIn.setDrawEntryLabels(true);
+
+        mPiechartIn.setDrawSliceText(false); // To remove slice text
+        mPiechartIn.setDrawMarkers(false); // To remove markers when click
+        mPiechartIn.setDrawEntryLabels(false); // To remove labels from piece of pie
+        mPiechartIn.getDescription().setEnabled(false);
+
+
         mLayout1 = view.findViewById(R.id.layout_ov1);
         mLayout2 = view.findViewById(R.id.layout_ov2);
         mLayout3 = view.findViewById(R.id.layout_ov3);
@@ -161,11 +237,13 @@ public class OVTransactionMonth extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        getActivity().setTitle(getString(R.string.over_view_month));
+        Objects.requireNonNull(getActivity()).setTitle(getString(R.string.over_view_month));
     }
 
     private void initEvents() {
 
+        mPiechartEx.setOnChartValueSelectedListener(mPiechartExListener);
+        mPiechartIn.setOnChartValueSelectedListener(mPiechartInListener);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -173,18 +251,102 @@ public class OVTransactionMonth extends Fragment {
 
         float moneyEx = 0;
         float moneyIn = 0;
+
+
+        float money1 = 0, money5 = 0, money13 = 0, money18 = 0,
+                money23 = 0, money24 = 0, money27 = 0, money28 = 0,
+                money33 = 0, money37 = 0, money42 = 0, money49 = 0, money51 = 0,
+                money53 = 0, money56 = 0;
+
+
         List<Transaction> itemsEx = new ArrayList<>();
         List<Transaction> itemsIn = new ArrayList<>();
 
-
         for (Transaction tran : mItems) {
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 1) {
+
+                money1 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 5) {
+
+                money5 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 13) {
+
+                money13 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 18) {
+
+                money18 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 23) {
+
+                money23 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 24) {
+
+                money24 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 27) {
+
+                money27 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 28) {
+
+                money28 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 33) {
+
+                money33 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 37) {
+
+                money37 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 42) {
+
+                money42 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 49) {
+
+                money49 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 51) {
+
+                money51 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 53) {
+
+                money53 += Math.abs(tran.getMoneyTradingWithSign());
+            }
+
+            if (tran.getTransactionCategoryID().getCategoryParentId() == 56) {
+
+                money56 += Math.abs(tran.getMoneyTradingWithSign());
+            }
 
             if (tran.getMoneyTradingWithSign() < 0) {
 
                 moneyEx += Math.abs(tran.getMoneyTradingWithSign());
                 itemsEx.add(tran);
 
-            } else {
+            }
+
+            if (tran.getMoneyTradingWithSign() >= 0) {
 
                 moneyIn += Math.abs(tran.getMoneyTradingWithSign());
                 itemsIn.add(tran);
@@ -192,6 +354,7 @@ public class OVTransactionMonth extends Fragment {
         }
 
         float moneyIncomeNet = moneyIn - moneyEx;
+
 
         mMoneyIncome.setText(String.valueOf(moneyIn));
         mMoneyIncome.setTextColor(getResources().getColor(R.color.colorMoneyTradingPositive));
@@ -228,7 +391,111 @@ public class OVTransactionMonth extends Fragment {
             mLayout4.setVisibility(View.GONE);
         }
 
+        List<Pair<Float, String>> totalCategory = new ArrayList<>();
 
+        totalCategory.add(new Pair<>(money1, "Ăn uống"));
+        totalCategory.add(new Pair<>(money5, "Hóa đơn & Tiện ích"));
+        totalCategory.add(new Pair<>(money13, "Di chuyển"));
+        totalCategory.add(new Pair<>(money18, "Mua sắm"));
+        totalCategory.add(new Pair<>(money23, "Bạn bè & Người yêu"));
+        totalCategory.add(new Pair<>(money24, "Giải trí"));
+        totalCategory.add(new Pair<>(money27, "Du lịch"));
+        totalCategory.add(new Pair<>(money28, "Sức khỏe"));
+        totalCategory.add(new Pair<>(money33, "Quà tặng & Khuyên góp"));
+        totalCategory.add(new Pair<>(money37, "Gia đình"));
+        totalCategory.add(new Pair<>(money42, "Giáo dục"));
+        totalCategory.add(new Pair<>(money49, "Khoản chi khác"));
+        totalCategory.add(new Pair<>(money51, "Thưởng"));
+        totalCategory.add(new Pair<>(money53, "Lương"));
+        totalCategory.add(new Pair<>(money56, "Khoản thu khác"));
+
+        List<Pair<Float, String>> totalDataEx = new ArrayList<>();
+        List<Pair<Float, String>> totalDataIn = new ArrayList<>();
+
+        for (int i = 0; i < totalCategory.size(); i++) {
+
+            if (totalCategory.get(i).first > 0) {
+
+                if (totalCategory.get(i).first == money51 ||totalCategory.get(i).first == money53 || totalCategory.get(i).first == money56) {
+
+                    totalDataIn.add(new Pair<>(totalCategory.get(i).first, totalCategory.get(i).second));
+                    mYDataIn.add(totalCategory.get(i).first);
+                    mXDataIn.add(totalCategory.get(i).second);
+
+                } else {
+
+                    totalDataEx.add(new Pair<>(totalCategory.get(i).first, totalCategory.get(i).second));
+                    mYDataEx.add(totalCategory.get(i).first);
+                    mXDataEx.add(totalCategory.get(i).second);
+
+                }
+            }
+        }
+        addDataSet(mPiechartEx, totalDataEx);
+        addDataSet(mPiechartIn, totalDataIn);
+    }
+
+    private void addDataSet(PieChart pieChart, List<Pair<Float, String>> totalData) {
+
+        ArrayList<PieEntry> yEntries = new ArrayList<>();
+        ArrayList<String> xEntries = new ArrayList<>();
+
+        for (int i = 0; i < totalData.size(); i++) {
+
+            yEntries.add(new PieEntry(totalData.get(i).first, i));
+            xEntries.add(totalData.get(i).second);
+        }
+
+
+        //create the data set
+        PieDataSet pieDataSet = new PieDataSet(yEntries, "TransactionChart");
+        pieDataSet.setSliceSpace(2);
+        pieDataSet.setValueTextSize(12);
+
+        //add colors to dataset
+        ArrayList<Integer> colors = new ArrayList<>();
+
+        colors.add(Color.GRAY);
+        colors.add(Color.BLUE);
+        colors.add(Color.RED);
+        colors.add(Color.GREEN);
+        colors.add(Color.CYAN);
+        colors.add(Color.YELLOW);
+        colors.add(Color.MAGENTA);
+        colors.add(Color.BLACK);
+        colors.add(R.color.o_300);
+        colors.add(Color.LTGRAY);
+        colors.add(R.color.o_900);
+        colors.add(Color.DKGRAY);
+
+
+        pieDataSet.setColors(colors);
+
+        List<LegendEntry> entries = new ArrayList<>();
+
+        for (int i = 0; i < xEntries.size(); i++) {
+            LegendEntry entry = new LegendEntry();
+            entry.formColor = colors.get(i);
+            entry.label = xEntries.get(i);
+            entries.add(entry);
+        }
+
+        //add legend to chart
+        Legend legend = pieChart.getLegend();
+        legend.setForm(Legend.LegendForm.CIRCLE);
+        legend.setPosition(Legend.LegendPosition.RIGHT_OF_CHART);
+        legend.setCustom(entries);
+
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER); // set vertical alignment for legend
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT); // set horizontal alignment for legend
+        legend.setOrientation(Legend.LegendOrientation.VERTICAL); // set orientation for legend
+        legend.setDrawInside(false);
+
+
+        //create pie data object
+        PieData pieData = new PieData(pieDataSet);
+        pieChart.setData(pieData);
+        pieChart.invalidate();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -320,5 +587,22 @@ public class OVTransactionMonth extends Fragment {
             e.printStackTrace();
         }
     }
+
+
+//    private void showItemSelect(Entry e, Highlight h, List<Float> y, List<String> x) {
+//
+//        int pos1 = e.toString().indexOf(":");
+//        String moneyTranding = e.toString().substring(pos1 + 9);
+//
+//        for (int i = 0; i < y.size(); i++) {
+//            if (y.get(i) == Float.parseFloat(moneyTranding)) {
+//                pos1 = i;
+//                break;
+//            }
+//        }
+//        String nameCategory = x.get(pos1);
+//        Toast.makeText(getContext(), nameCategory + ":" + moneyTranding + "đ", Toast.LENGTH_LONG).show();
+//
+//    }
 
 }

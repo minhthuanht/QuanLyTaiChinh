@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -28,16 +28,16 @@
             android:label="@string/add_transaction"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".wallet.FinishUpWallet"
+            android:name=".wallet.activity.FinishUpWallet"
             android:theme="@style/AppTheme.ActionBarSetting" />
         <activity
-            android:name=".wallet.BalanceActivity"
+            android:name=".wallet.activity.BalanceActivity"
             android:theme="@style/AppTheme.ActionBarSetting" />
         <activity
-            android:name=".wallet.ChooseCurrencyActivity"
+            android:name=".wallet.activity.ChooseCurrencyActivity"
             android:theme="@style/AppTheme.ActionBarSetting" />
         <activity
-            android:name=".wallet.AddWalletActivity"
+            android:name=".wallet.activity.AddWalletActivity"
             android:theme="@style/AppTheme.ActionBarSetting" />
         <activity android:name=".account.activity.ForgotPasswordActivity" />
         <activity

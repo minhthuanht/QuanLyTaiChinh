@@ -1,4 +1,4 @@
-package com.minhthuanht.quanlytaichinh.adapter;
+package com.minhthuanht.quanlytaichinh.transaction.adapter;
 
 import android.util.Pair;
 

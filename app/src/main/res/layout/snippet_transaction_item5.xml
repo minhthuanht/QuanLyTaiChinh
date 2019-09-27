@@ -10,7 +10,6 @@
         android:id="@+id/imgItemInMin"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="8dp"
-        android:src="@drawable/facebook"
         android:layout_centerVertical="true"
         android:contentDescription="logo"/>
 
@@ -18,7 +17,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtLableInMin"
-        android:text="Ăn uống"
         android:textSize="16dp"
         android:layout_toRightOf="@+id/imgItemInMin"
         android:layout_marginTop="8dp"
@@ -32,7 +30,6 @@
         android:layout_below="@+id/txtLableInMin"
         android:textSize="12dp"
         android:layout_toRightOf="@+id/imgItemInMin"
-        android:text="bacacb"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp"/>
@@ -44,7 +41,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
-        android:text="555đ"
         android:textSize="24dp"
         android:textColor="@color/r_900"
         android:layout_marginRight="8dp"/>

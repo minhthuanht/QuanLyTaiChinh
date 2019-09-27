@@ -24,8 +24,7 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.minhthuanht.quanlytaichinh.R;
-import com.minhthuanht.quanlytaichinh.account.activity.ForgotPasswordActivity;
-import com.minhthuanht.quanlytaichinh.adapter.TransactionPagerAdapter;
+import com.minhthuanht.quanlytaichinh.transaction.adapter.TransactionPagerAdapter;
 import com.minhthuanht.quanlytaichinh.implementDAO.ITransactionsDAO;
 import com.minhthuanht.quanlytaichinh.implementDAO.IWalletsDAO;
 import com.minhthuanht.quanlytaichinh.implementDAO.TransactionsDAOimpl;
@@ -39,6 +38,7 @@ import com.minhthuanht.quanlytaichinh.utilities.DateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class FragmentTransactionTab extends Fragment {
@@ -67,13 +67,10 @@ public class FragmentTransactionTab extends Fragment {
 
     private DateUtils mDateUtils = new DateUtils();
 
-    private final View.OnClickListener mAddTransactionListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+    private final View.OnClickListener mAddTransactionListener = view -> {
 
-            Intent intent = new Intent(getContext(), AddTransactionActivity.class);
-            startActivityForResult(intent, ADD_TRANSACTION_REQUEST_CODE);
-        }
+        Intent intent = new Intent(getContext(), AddTransactionActivity.class);
+        startActivityForResult(intent, ADD_TRANSACTION_REQUEST_CODE);
     };
 
     private final ViewPager.OnPageChangeListener mViewPagerListener = new ViewPager.OnPageChangeListener() {
@@ -157,7 +154,7 @@ public class FragmentTransactionTab extends Fragment {
         new LoadTabs(getActivity()).execute();
         super.onResume();
 
-        getActivity().setTitle(getString(R.string.transaction_book));
+        Objects.requireNonNull(getActivity()).setTitle(getString(R.string.transaction_book));
     }
 
     @Override

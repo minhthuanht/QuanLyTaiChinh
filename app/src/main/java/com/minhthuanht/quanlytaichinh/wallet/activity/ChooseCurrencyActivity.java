@@ -1,4 +1,4 @@
-package com.minhthuanht.quanlytaichinh.wallet;
+package com.minhthuanht.quanlytaichinh.wallet.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

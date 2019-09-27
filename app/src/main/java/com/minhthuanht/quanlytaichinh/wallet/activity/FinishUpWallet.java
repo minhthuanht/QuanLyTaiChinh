@@ -1,4 +1,4 @@
-package com.minhthuanht.quanlytaichinh.wallet;
+package com.minhthuanht.quanlytaichinh.wallet.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -132,6 +132,8 @@ public class FinishUpWallet extends AppCompatActivity {
         if (add_wallet && add_transaction) {
 
             Intent intent = new Intent(FinishUpWallet.this, MainActivity.class);
+
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
         } else {

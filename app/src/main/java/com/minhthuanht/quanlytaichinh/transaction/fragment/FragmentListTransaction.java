@@ -25,10 +25,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.minhthuanht.quanlytaichinh.R;
-import com.minhthuanht.quanlytaichinh.adapter.TransactionListAdapter;
+import com.minhthuanht.quanlytaichinh.transaction.adapter.TransactionListAdapter;
 import com.minhthuanht.quanlytaichinh.model.MTDate;
 import com.minhthuanht.quanlytaichinh.model.Transaction;
-import com.minhthuanht.quanlytaichinh.overviewtransaction.OVTransactionMonth;
+import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.OVTransactionMonth;
 import com.minhthuanht.quanlytaichinh.pinnedheaderlistview.PinnedHeaderListView;
 import com.minhthuanht.quanlytaichinh.transaction.activity.DetailTransactionActivity;
 

@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.minhthuanht.quanlytaichinh.R;
-import com.minhthuanht.quanlytaichinh.adapter.CategoriesPageAdapter;
+import com.minhthuanht.quanlytaichinh.category.adapter.CategoriesPageAdapter;
 import com.minhthuanht.quanlytaichinh.implementDAO.CategoriesDAOimpl;
 import com.minhthuanht.quanlytaichinh.implementDAO.ICategoriesDAO;
 import com.minhthuanht.quanlytaichinh.model.Category;

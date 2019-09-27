@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".overviewtransaction.OVTransactionMonth">
+    tools:context=".overviewtransaction.fragment.OVTransactionMonth">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -191,9 +191,9 @@
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/piechartExpenses"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="300dp"
                         android:layout_below="@+id/text8"
-                        android:layout_marginTop="20dp" />
+                        />
 
                     <TextView
                         android:id="@+id/text14"
@@ -316,9 +316,9 @@
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/piechartIncome"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="300dp"
                         android:layout_below="@+id/text13"
-                        android:layout_marginTop="20dp" />
+                        />
 
 
 

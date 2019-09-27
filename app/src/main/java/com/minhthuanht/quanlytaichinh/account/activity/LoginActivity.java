@@ -26,7 +26,7 @@ import com.minhthuanht.quanlytaichinh.R;
 import com.minhthuanht.quanlytaichinh.MainActivity;
 import com.minhthuanht.quanlytaichinh.implementDAO.IWalletsDAO;
 import com.minhthuanht.quanlytaichinh.implementDAO.WalletsDAOimpl;
-import com.minhthuanht.quanlytaichinh.wallet.ChooseCurrencyActivity;
+import com.minhthuanht.quanlytaichinh.wallet.activity.ChooseCurrencyActivity;
 
 import java.util.Objects;
 

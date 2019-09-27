@@ -1,9 +1,8 @@
-package com.minhthuanht.quanlytaichinh.wallet;
+package com.minhthuanht.quanlytaichinh.wallet.activity;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,23 +16,23 @@ import com.minhthuanht.quanlytaichinh.R;
 
 import java.util.Objects;
 
-public class AddWalletActivity extends AppCompatActivity {
+public class BalanceActivity extends AppCompatActivity {
 
-    private static final String TAG = "AddWalletActivity";
+    private static final String TAG = "BalanceActivity";
 
     private ImageButton mImgBack;
 
-    private TextInputLayout mInputWallet;
+    private TextInputLayout mInputBalance;
 
     private Button mContinue;
 
-    private String mCurrency;
+    private Bundle bundle;
 
     private View.OnClickListener mImgBackListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
-            backChooseCurrencyActivity();
+            backAddWalletActivity();
         }
     };
 
@@ -42,21 +41,20 @@ public class AddWalletActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
-            sendBalanceActivity();
+            sendFinishUpWallet();
         }
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_wallet);
+        setContentView(R.layout.activity_balance);
 
-        getDataChooseCurrency();
+        getDataAddWalletActivity();
 
         initControls();
         initEvents();
     }
-
 
     private void initEvents() {
 
@@ -64,44 +62,45 @@ public class AddWalletActivity extends AppCompatActivity {
         mContinue.setOnClickListener(mContinueListener);
     }
 
-    @SuppressLint("CutPasteId")
     private void initControls() {
 
         mImgBack = findViewById(R.id.imgBack);
-        mInputWallet = findViewById(R.id.txtInputWallet);
+        mInputBalance = findViewById(R.id.txtInputBalance);
         mContinue = findViewById(R.id.btnContinue);
     }
 
-    private void getDataChooseCurrency() {
+    private void getDataAddWalletActivity() {
 
         Intent intent = getIntent();
-        mCurrency = intent.getStringExtra("CURRENCY");
-        assert mCurrency != null;
-        Log.d(TAG, mCurrency);
+        bundle = intent.getExtras();
+        Log.d(TAG, String.valueOf(bundle));
     }
 
-    private void backChooseCurrencyActivity() {
+    private void backAddWalletActivity() {
 
         finish();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void sendBalanceActivity() {
+    private void sendFinishUpWallet() {
 
-        String nameWallet = Objects.requireNonNull(mInputWallet.getEditText()).getText().toString();
+        String valueBalance = Objects.requireNonNull(mInputBalance.getEditText()).getText().toString();
 
-        if (nameWallet.isEmpty()) {
+        if (valueBalance.isEmpty()) {
 
-            mInputWallet.setError(getString(R.string.show_error_empty));
-            mInputWallet.requestFocus();
+            mInputBalance.setError(getString(R.string.show_error_empty));
+            mInputBalance.requestFocus();
         } else {
 
-            Intent intent = new Intent(AddWalletActivity.this, BalanceActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("CURRENCY", mCurrency);
-            bundle.putString("NAME_WALLET", nameWallet);
-            intent.putExtras(bundle);
+            Intent intent = new Intent(BalanceActivity.this, FinishUpWallet.class);
+            float balance = Float.parseFloat(valueBalance);
+            if (bundle != null) {
+                bundle.putFloat("BALANCE", balance);
+
+                intent.putExtras(bundle);
+            }
             startActivity(intent);
         }
     }
+
 }

@@ -9,15 +9,17 @@ public class Category implements Parcelable {
     private TransactionTypes categoryType;
     private String category;
     private String categoryIcon;
+    private int categoryParentId;
 
     public Category() {
     }
 
-    public Category(int categoryID, int categoryType, String category, String categoryIcon) {
+    public Category(int categoryID, int categoryType, String category, String categoryIcon, int categoryParentId) {
         this.categoryID = categoryID;
         this.categoryType = TransactionTypes.from(categoryType);
         this.category = category;
         this.categoryIcon = categoryIcon;
+        this.categoryParentId = categoryParentId;
     }
 
     private Category(Parcel in) {
@@ -25,6 +27,7 @@ public class Category implements Parcelable {
         categoryType = TransactionTypes.values()[in.readInt()];
         category = in.readString();
         categoryIcon = in.readString();
+        categoryParentId = in.readInt();
     }
 
     @Override
@@ -33,6 +36,7 @@ public class Category implements Parcelable {
         dest.writeInt(categoryType.ordinal());
         dest.writeString(category);
         dest.writeString(categoryIcon);
+        dest.writeInt(categoryParentId);
     }
 
     @Override
@@ -72,7 +76,7 @@ public class Category implements Parcelable {
         return category;
     }
 
-    public void getCategory(String category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
@@ -84,4 +88,11 @@ public class Category implements Parcelable {
         this.categoryIcon = categoryIcon;
     }
 
+    public int getCategoryParentId() {
+        return categoryParentId;
+    }
+
+    public void setCategoryParentId(int categoryParentId) {
+        this.categoryParentId = categoryParentId;
+    }
 }

@@ -11,4 +11,5 @@ public interface ICategoriesDAO {
     List<Category> getAllCategory();
     List<Category> getCategoriesByType(int type);
     Category getCategoryById(int typeId);
+    Category getCategoryByName(String name);
 }

@@ -13,7 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.minhthuanht.quanlytaichinh.account.fragment.FragmentAccountManager;
-import com.minhthuanht.quanlytaichinh.overviewtransaction.FragmentTendency;
+import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.FragmentTendency;
 import com.minhthuanht.quanlytaichinh.transaction.fragment.FragmentTransactionTab;
 
 
@@ -127,7 +127,11 @@ public class MainActivity extends AppCompatActivity
                 // Handle
                 fragmentClass = FragmentTendency.class;
 
-            } else if (id == R.id.nav_manage) {
+            } else if (id == R.id.nav_paybook){
+                // handle
+            }
+
+            else if (id == R.id.nav_manage) {
                 // Handle
                 Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
 
