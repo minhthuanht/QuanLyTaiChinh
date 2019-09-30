@@ -1,4 +1,4 @@
-package com.minhthuanht.quanlytaichinh.chart.fragment;
+package com.minhthuanht.quanlytaichinh.overviewtransaction.fragment;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class FragmentChartOVTransactions extends Fragment {
+public class FragmentPieChartOV extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_ITEMS = "items";
@@ -48,10 +48,6 @@ public class FragmentChartOVTransactions extends Fragment {
     private List<Transaction> mListTransactions = new ArrayList<>();
 
     private int mPosition;
-
-    private List<Float> mYData = new ArrayList<>();
-
-    private List<String> mXData = new ArrayList<>();
 
     private final OnChartValueSelectedListener mPiechartListener = new OnChartValueSelectedListener() {
         @Override
@@ -68,7 +64,7 @@ public class FragmentChartOVTransactions extends Fragment {
     };
 
 
-    public FragmentChartOVTransactions() {
+    public FragmentPieChartOV() {
         // Required empty public constructor
     }
 
@@ -76,10 +72,14 @@ public class FragmentChartOVTransactions extends Fragment {
     // TODO: Rename and change types and number of parameters
 
     public static Fragment newInstance(List<Transaction> listTransaction, int position) {
-        FragmentChartOVTransactions fragment = new FragmentChartOVTransactions();
+        FragmentPieChartOV fragment = new FragmentPieChartOV();
         Bundle args = new Bundle();
-        args.putParcelableArrayList(ARG_ITEMS, (ArrayList<? extends Parcelable>) listTransaction);
-        args.putInt(ARG_POSITION, position);
+        if (listTransaction != null ) {
+
+            args.putParcelableArrayList(ARG_ITEMS, (ArrayList<? extends Parcelable>) listTransaction);
+            args.putInt(ARG_POSITION, position);
+        }
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -124,7 +124,7 @@ public class FragmentChartOVTransactions extends Fragment {
 
         mRecycleViewOV.setLayoutManager(llm);
 
-        initData();
+        onBindView();
 
         intitEvents();
 
@@ -136,7 +136,7 @@ public class FragmentChartOVTransactions extends Fragment {
         mPieChart.setOnChartValueSelectedListener(mPiechartListener);
     }
 
-    private void initData() {
+    private void onBindView() {
 
         float money1 = 0, money5 = 0, money13 = 0, money18 = 0,
                 money23 = 0, money24 = 0, money27 = 0, money28 = 0,
@@ -176,8 +176,8 @@ public class FragmentChartOVTransactions extends Fragment {
                     if (listItems.get(i).first > 0) {
 
                         totalItems.add(new Pair<>(listItems.get(i).first, listItems.get(i).second));
-                        mYData.add(listItems.get(i).first);
-                        mXData.add(listItems.get(i).second);
+//                        mYData.add(listItems.get(i).first);
+//                        mXData.add(listItems.get(i).second);
                     }
                 }
 
@@ -270,8 +270,8 @@ public class FragmentChartOVTransactions extends Fragment {
                     if (listItemsEx.get(i).first > 0) {
 
                         totalItemsEx.add(new Pair<>(listItemsEx.get(i).first, listItemsEx.get(i).second));
-                        mYData.add(listItemsEx.get(i).first);
-                        mXData.add(listItemsEx.get(i).second);
+//                        mYData.add(listItemsEx.get(i).first);
+//                        mXData.add(listItemsEx.get(i).second);
                     }
                 }
 
@@ -311,8 +311,8 @@ public class FragmentChartOVTransactions extends Fragment {
                     if (listItemsIn.get(i).first > 0) {
 
                         totalItemsIn.add(new Pair<>(listItemsIn.get(i).first, listItemsIn.get(i).second));
-                        mYData.add(listItemsIn.get(i).first);
-                        mXData.add(listItemsIn.get(i).second);
+//                        mYData.add(listItemsIn.get(i).first);
+//                        mXData.add(listItemsIn.get(i).second);
                     }
                 }
 

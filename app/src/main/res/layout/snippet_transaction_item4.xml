@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     >
 
     <ImageView
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:id="@+id/imgItemInMax"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="8dp"
@@ -19,29 +19,17 @@
         android:id="@+id/txtLableInMax"
         android:textSize="16dp"
         android:layout_toRightOf="@+id/imgItemInMax"
-        android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
-        android:textColor="#000"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtNoteInMax"
-        android:layout_below="@+id/txtLableInMax"
-        android:textSize="12dp"
-        android:layout_toRightOf="@+id/imgItemInMax"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="#000"
+        android:layout_centerVertical="true"/>
 
     <com.minhthuanht.quanlytaichinh.view.CurrencyTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtTrandingInMax"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
-        android:textSize="24dp"
+        android:textSize="14dp"
         android:textColor="@color/r_900"
         android:layout_marginRight="8dp"/>
 

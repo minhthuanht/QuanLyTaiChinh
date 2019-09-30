@@ -101,14 +101,14 @@ public class OVTransactionMonth extends Fragment {
 
     private List<Transaction> mItems = new ArrayList<>();
 
+//
+//    private List<Float> mYDataEx = new ArrayList<>();
+//
+//    private List<String> mXDataEx = new ArrayList<>();
 
-    private List<Float> mYDataEx = new ArrayList<>();
-
-    private List<String> mXDataEx = new ArrayList<>();
-
-    private List<Float> mYDataIn = new ArrayList<>();
-
-    private List<String> mXDataIn = new ArrayList<>();
+//    private List<Float> mYDataIn = new ArrayList<>();
+//
+//    private List<String> mXDataIn = new ArrayList<>();
 
     private final OnChartValueSelectedListener mPiechartExListener = new OnChartValueSelectedListener() {
         @Override
@@ -174,22 +174,18 @@ public class OVTransactionMonth extends Fragment {
 
         mImageExMax = view.findViewById(R.id.imgItemExMax);
         mLabelExMax = view.findViewById(R.id.txtLableExMax);
-        mNoteExMax = view.findViewById(R.id.txtNoteExMax);
         mTradingExMax = view.findViewById(R.id.txtTrandingExMax);
 
         mImageExMin = view.findViewById(R.id.imgItemExMin);
         mLabelExMin = view.findViewById(R.id.txtLableExMin);
-        mNoteExMin = view.findViewById(R.id.txtNoteExMin);
         mTradingExMin = view.findViewById(R.id.txtTrandingExMin);
 
         mImageInMax = view.findViewById(R.id.imgItemInMax);
         mLabelInMax = view.findViewById(R.id.txtLableInMax);
-        mNoteInMax = view.findViewById(R.id.txtNoteInMax);
         mTradingInMax = view.findViewById(R.id.txtTrandingInMax);
 
         mImageInMin = view.findViewById(R.id.imgItemInMin);
         mLabelInMin = view.findViewById(R.id.txtLableInMin);
-        mNoteInMin = view.findViewById(R.id.txtNoteInMin);
         mTradingInMin = view.findViewById(R.id.txtTrandingInMin);
 
         mPiechartEx = view.findViewById(R.id.piechartExpenses);
@@ -267,74 +263,46 @@ public class OVTransactionMonth extends Fragment {
             if (tran.getTransactionCategoryID().getCategoryParentId() == 1) {
 
                 money1 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 5) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 5) {
 
                 money5 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 13) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 13) {
 
                 money13 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 18) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 18) {
 
                 money18 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 23) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 23) {
 
                 money23 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 24) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 24) {
 
                 money24 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 27) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 27) {
 
                 money27 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 28) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 28) {
 
                 money28 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 33) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 33) {
 
                 money33 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 37) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 37) {
 
                 money37 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 42) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 42) {
 
                 money42 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 49) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 49) {
 
                 money49 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 51) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 51) {
 
                 money51 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 53) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 53) {
 
                 money53 += Math.abs(tran.getMoneyTradingWithSign());
-            }
-
-            if (tran.getTransactionCategoryID().getCategoryParentId() == 56) {
+            } else if (tran.getTransactionCategoryID().getCategoryParentId() == 56) {
 
                 money56 += Math.abs(tran.getMoneyTradingWithSign());
             }
@@ -416,17 +384,17 @@ public class OVTransactionMonth extends Fragment {
 
             if (totalCategory.get(i).first > 0) {
 
-                if (totalCategory.get(i).first == money51 ||totalCategory.get(i).first == money53 || totalCategory.get(i).first == money56) {
+                if (totalCategory.get(i).second.equalsIgnoreCase("Thưởng") || totalCategory.get(i).second.equalsIgnoreCase("Lương") || totalCategory.get(i).second.equalsIgnoreCase("Khoản thu khác")) {
 
                     totalDataIn.add(new Pair<>(totalCategory.get(i).first, totalCategory.get(i).second));
-                    mYDataIn.add(totalCategory.get(i).first);
-                    mXDataIn.add(totalCategory.get(i).second);
+//                    mYDataIn.add(totalCategory.get(i).first);
+//                    mXDataIn.add(totalCategory.get(i).second);
 
                 } else {
 
                     totalDataEx.add(new Pair<>(totalCategory.get(i).first, totalCategory.get(i).second));
-                    mYDataEx.add(totalCategory.get(i).first);
-                    mXDataEx.add(totalCategory.get(i).second);
+//                    mYDataEx.add(totalCategory.get(i).first);
+//                    mXDataEx.add(totalCategory.get(i).second);
 
                 }
             }
@@ -504,7 +472,6 @@ public class OVTransactionMonth extends Fragment {
         // lấy item có properties trading lớn nhất
         Transaction transaction = Collections.max(itemsEx, Comparator.comparing(Transaction::getTransactionTrading));
         mLabelExMax.setText(transaction.getTransactionCategoryID().getCategory());
-        mNoteExMax.setText(transaction.getTransactionNote());
         mTradingExMax.setText(String.valueOf((int) transaction.getTransactionTrading()));
         mTradingExMax.setTextColor(getResources().getColor(R.color.colorMoneyTradingNegative));
 
@@ -526,7 +493,6 @@ public class OVTransactionMonth extends Fragment {
 
         Transaction transaction = Collections.min(itemsEx, Comparator.comparing(Transaction::getTransactionTrading));
         mLabelExMin.setText(transaction.getTransactionCategoryID().getCategory());
-        mNoteExMin.setText(transaction.getTransactionNote());
         mTradingExMin.setText(String.valueOf((int) transaction.getTransactionTrading()));
         mTradingExMin.setTextColor(getResources().getColor(R.color.colorMoneyTradingNegative));
 
@@ -548,7 +514,6 @@ public class OVTransactionMonth extends Fragment {
 
         Transaction transaction = Collections.max(itemsIn, Comparator.comparing(Transaction::getTransactionTrading));
         mLabelInMax.setText(transaction.getTransactionCategoryID().getCategory());
-        mNoteInMax.setText(transaction.getTransactionNote());
         mTradingInMax.setText(String.valueOf((int) transaction.getTransactionTrading()));
         mTradingInMax.setTextColor(getResources().getColor(R.color.colorMoneyTradingPositive));
 
@@ -571,7 +536,6 @@ public class OVTransactionMonth extends Fragment {
 
         Transaction transaction = Collections.min(itemsIn, Comparator.comparing(Transaction::getTransactionTrading));
         mLabelInMin.setText(transaction.getTransactionCategoryID().getCategory());
-        mNoteInMin.setText(transaction.getTransactionNote());
         mTradingInMin.setText(String.valueOf((int) transaction.getTransactionTrading()));
         mTradingInMin.setTextColor(getResources().getColor(R.color.colorMoneyTradingPositive));
 
@@ -587,22 +551,5 @@ public class OVTransactionMonth extends Fragment {
             e.printStackTrace();
         }
     }
-
-
-//    private void showItemSelect(Entry e, Highlight h, List<Float> y, List<String> x) {
-//
-//        int pos1 = e.toString().indexOf(":");
-//        String moneyTranding = e.toString().substring(pos1 + 9);
-//
-//        for (int i = 0; i < y.size(); i++) {
-//            if (y.get(i) == Float.parseFloat(moneyTranding)) {
-//                pos1 = i;
-//                break;
-//            }
-//        }
-//        String nameCategory = x.get(pos1);
-//        Toast.makeText(getContext(), nameCategory + ":" + moneyTranding + "đ", Toast.LENGTH_LONG).show();
-//
-//    }
 
 }

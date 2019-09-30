@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.minhthuanht.quanlytaichinh.R;
-import com.minhthuanht.quanlytaichinh.chart.fragment.FragmentChartOVTransactions;
 import com.minhthuanht.quanlytaichinh.implementDAO.ITransactionsDAO;
 import com.minhthuanht.quanlytaichinh.implementDAO.IWalletsDAO;
 import com.minhthuanht.quanlytaichinh.implementDAO.TransactionsDAOimpl;
@@ -59,6 +59,7 @@ public class FragmentTendency extends Fragment {
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
 
             mSpSelectClick = position;
+            handleItemClick();
         }
 
         @Override
@@ -126,6 +127,7 @@ public class FragmentTendency extends Fragment {
 
         List<Transaction> tranEx = new ArrayList<>();
         List<Transaction> tranIn = new ArrayList<>();
+        Fragment fragment;
 
         for (Transaction tran : mListTransaction) {
 
@@ -139,36 +141,99 @@ public class FragmentTendency extends Fragment {
             }
         }
 
+        switch (mSpSelectClick) {
 
-        if (mSpSelectClick == 0) {
+            case 0:
 
-            Fragment fragment;
+                switch (mSpItemsClick) {
 
-            switch (mSpItemsClick) {
+                    case 2:
+                        fragment = FragmentPieChartOV.newInstance(mListTransaction, 2);
+                        assert fragment != null;
+                        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
 
-                case 2:
-                    fragment = FragmentChartOVTransactions.newInstance(mListTransaction, 2);
-                    assert fragment != null;
-                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
+                        break;
 
-                    break;
+                    case 0:
+                        fragment = FragmentPieChartOV.newInstance(tranEx, 0);
+                        assert fragment != null;
+                        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
 
-                case 0:
-                    fragment = FragmentChartOVTransactions.newInstance(mListTransaction, 0);
-                    assert fragment != null;
-                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
+                        break;
 
-                    break;
+                    case 1:
+                        fragment = FragmentPieChartOV.newInstance(tranIn, 1);
+                        assert fragment != null;
+                        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
 
-                case 1:
-                    fragment = FragmentChartOVTransactions.newInstance(mListTransaction, 1);
-                    assert fragment != null;
-                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
+                        break;
 
-                    break;
+                }
 
-            }
+                break;
+
+            case 1:
+
+                switch (mSpItemsClick) {
+
+                    case 2:
+                        Toast.makeText(getContext(), getString(R.string.feature_developing), Toast.LENGTH_SHORT).show();
+//                        fragment = FragmentBarChartOv.newInstance(mListTransaction, 2);
+//                        assert fragment != null;
+//                        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
+//
+                        break;
+
+                    case 0:
+                        fragment = FragmentBarChartOv.newInstance(tranEx, 0);
+                        assert fragment != null;
+                        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
+
+                        break;
+
+                    case 1:
+                        fragment = FragmentBarChartOv.newInstance(tranIn, 1);
+                        assert fragment != null;
+                        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
+
+                        break;
+
+                }
+
+                break;
+
+
         }
+
+//        if (mSpSelectClick == 0) {
+//
+//            Fragment fragment;
+//
+//            switch (mSpItemsClick) {
+//
+//                case 2:
+//                    fragment = FragmentPieChartOV.newInstance(mListTransaction, 2);
+//                    assert fragment != null;
+//                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
+//
+//                    break;
+//
+//                case 0:
+//                    fragment = FragmentPieChartOV.newInstance(mListTransaction, 0);
+//                    assert fragment != null;
+//                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
+//
+//                    break;
+//
+//                case 1:
+//                    fragment = FragmentPieChartOV.newInstance(mListTransaction, 1);
+//                    assert fragment != null;
+//                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
+//
+//                    break;
+//
+//            }
+//        }
     }
 
 }
