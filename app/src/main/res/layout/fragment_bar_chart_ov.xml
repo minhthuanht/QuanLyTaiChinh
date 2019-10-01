@@ -6,25 +6,33 @@
     tools:context=".overviewtransaction.fragment.FragmentBarChartOv">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:padding="5dp"/>
+
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchartItems"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:layout_alignParentTop="true"
-        />
+        android:layout_below="@+id/txtDate" />
 
     <TextView
-        android:layout_marginTop="10dp"
+        android:id="@+id/text1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:id="@+id/text1"
-        android:background="@color/g_400"
-        android:layout_below="@+id/barchartItems"/>
+        android:layout_below="@+id/barchartItems"
+        android:layout_marginTop="10dp"
+        android:background="@color/g_400" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleViewOV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/recycleViewOV"
         android:layout_below="@+id/text1"
         android:layout_marginTop="20dp">
 

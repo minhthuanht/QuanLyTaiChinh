@@ -109,4 +109,18 @@
     <string name="information_account">Thông tin tài khoản</string>
     <string name="change_password">Thay đổi mật khẩu</string>
     <string name="over_view_month">Tổng quan tháng</string>
+    <string name="loan_you">nợ bạn </string>
+    <string name="you_loan">bạn nợ </string>
+    <string name="pay_book">Sổ nợ</string>
+    <string name="format_date">dd/MM/yyyy</string>
+    <string name="tendency">Xu hướng</string>
+    <string name="plan">Kế hoạch</string>
+    <string name="budget">Ngân sách</string>
+    <string name="recurring_transactions">Giao dịch định kỳ</string>
+    <string name="communication">Giao tiếp</string>
+    <string name="share">Chia sẻ</string>
+    <string name="send">Gửi</string>
+    <string name="add">Thêm</string>
+    <string name="account_information">Thông tin tài khoản</string>
+    <string name="log_out">Đăng xuất</string>
 </resources>

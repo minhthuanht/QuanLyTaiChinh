@@ -85,11 +85,15 @@ public class FragmentListTransaction extends Fragment {
         // Required empty public constructor
     }
 
-    static FragmentListTransaction newInstance(List<Transaction> transactions) {
+    public static FragmentListTransaction newInstance(List<Transaction> transactions) {
         FragmentListTransaction fragment = new FragmentListTransaction();
         Bundle args = new Bundle();
-        Log.d(TAG, String.valueOf(transactions.size()));
-        args.putParcelableArrayList(BUNDLE_LIST_ITEM, (ArrayList<? extends Parcelable>) transactions);
+
+        if (transactions != null) {
+            Log.d(TAG, String.valueOf(transactions.size()));
+            args.putParcelableArrayList(BUNDLE_LIST_ITEM, (ArrayList<? extends Parcelable>) transactions);
+        }
+
         fragment.setArguments(args);
 
         return fragment;

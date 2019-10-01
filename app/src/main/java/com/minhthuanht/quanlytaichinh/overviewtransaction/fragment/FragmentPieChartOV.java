@@ -26,7 +26,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.minhthuanht.quanlytaichinh.R;
-import com.minhthuanht.quanlytaichinh.chart.adapter.ChartOVTransactionAdapter;
+import com.minhthuanht.quanlytaichinh.overviewtransaction.adapter.ChartOVTransactionAdapter;
 import com.minhthuanht.quanlytaichinh.model.Transaction;
 
 import java.util.ArrayList;

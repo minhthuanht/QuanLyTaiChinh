@@ -12,6 +12,7 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -38,11 +39,9 @@ public class FragmentBarChartOv extends Fragment {
 
     private List<Transaction> mItems = new ArrayList<>();
 
-    private int mPosition;
-
     private BarChart mBarChart;
 
-    private RecyclerView mRecycleViewOV;
+    private TextView mDate;
 
     private DateRange mDateRange;
 
@@ -59,7 +58,7 @@ public class FragmentBarChartOv extends Fragment {
     }
 
     // TODO: Rename and change types and number of parameters
-    public static FragmentBarChartOv newInstance(List<Transaction> listTransaction, int position) {
+    static FragmentBarChartOv newInstance(List<Transaction> listTransaction, int position) {
         FragmentBarChartOv fragment = new FragmentBarChartOv();
         Bundle args = new Bundle();
 
@@ -79,7 +78,6 @@ public class FragmentBarChartOv extends Fragment {
         if (getArguments() != null) {
 
             mItems = getArguments().getParcelableArrayList(ARG_ITEMS);
-            mPosition = getArguments().getInt(ARG_POSITION);
 
         }
     }
@@ -88,9 +86,10 @@ public class FragmentBarChartOv extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_fragment_bar_chart_ov, container, false);
+        View view = inflater.inflate(R.layout.fragment_bar_chart_ov, container, false);
         mBarChart = view.findViewById(R.id.barchartItems);
-        mRecycleViewOV = view.findViewById(R.id.recycleViewOV);
+        mDate = view.findViewById(R.id.txtDate);
+//        RecyclerView mRecycleViewOV = view.findViewById(R.id.recycleViewOV);
         mDateRange = new DateRange(new MTDate(mCalendar.get(Calendar.YEAR), 0, 1).firstDayOfMonth().setTimeToBeginningOfDay(), new MTDate());
 
         onBindView();
@@ -105,9 +104,11 @@ public class FragmentBarChartOv extends Fragment {
 
     private void onBindView() {
 
+        mDate.setText(String.valueOf(mCalendar.get(Calendar.YEAR)));
+
         if (mItems != null) {
 
-            int year, month = 0;
+            int year, month;
             int from_month = mDateRange.getDateFrom().getMonth();
             int from_year = mDateRange.getDateFrom().getYear();
             int to_month = mDateRange.getDateTo().getMonth();

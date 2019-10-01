@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.minhthuanht.quanlytaichinh.account.fragment.FragmentAccountManager;
+import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.FragmentPayBook;
 import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.FragmentTendency;
 import com.minhthuanht.quanlytaichinh.transaction.fragment.FragmentTransactionTab;
 
@@ -22,6 +23,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 
 import android.view.Menu;
@@ -71,6 +73,11 @@ public class MainActivity extends AppCompatActivity
         if (layout.isDrawerOpen(GravityCompat.START)) {
             layout.closeDrawer(GravityCompat.START);
         }
+        FragmentManager fm = getSupportFragmentManager();
+        int i = fm.getBackStackEntryCount();
+        if (i <= 1) {
+            finish();
+        }
         super.onBackPressed();
     }
 
@@ -119,7 +126,7 @@ public class MainActivity extends AppCompatActivity
                 e.printStackTrace();
             }
             assert fragment != null;
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, fragment).addToBackStack(null).commit();
             setTitle(item.getTitle());
 
         } else {
@@ -127,11 +134,10 @@ public class MainActivity extends AppCompatActivity
                 // Handle
                 fragmentClass = FragmentTendency.class;
 
-            } else if (id == R.id.nav_paybook){
+            } else if (id == R.id.nav_paybook) {
                 // handle
-            }
-
-            else if (id == R.id.nav_manage) {
+                fragmentClass = FragmentPayBook.class;
+            } else if (id == R.id.nav_manage) {
                 // Handle
                 Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
 

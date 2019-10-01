@@ -1,4 +1,4 @@
-package com.minhthuanht.quanlytaichinh.chart.adapter;
+package com.minhthuanht.quanlytaichinh.overviewtransaction.adapter;
 
 import android.content.Context;
 import android.content.res.AssetManager;

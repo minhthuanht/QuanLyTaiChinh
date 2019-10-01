@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -105,6 +106,12 @@ public class FragmentTendency extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Objects.requireNonNull(getActivity()).setTitle(R.string.tendency);
+    }
+
     private void initData() {
 
         IWalletsDAO iWalletsDAO = new WalletsDAOimpl(getContext());
@@ -128,6 +135,7 @@ public class FragmentTendency extends Fragment {
         List<Transaction> tranEx = new ArrayList<>();
         List<Transaction> tranIn = new ArrayList<>();
         Fragment fragment;
+        FrameLayout frameLayout = Objects.requireNonNull(getActivity()).findViewById(R.id.frame_layout_tendency);
 
         for (Transaction tran : mListTransaction) {
 
@@ -148,6 +156,7 @@ public class FragmentTendency extends Fragment {
                 switch (mSpItemsClick) {
 
                     case 2:
+                        frameLayout.setVisibility(View.VISIBLE);
                         fragment = FragmentPieChartOV.newInstance(mListTransaction, 2);
                         assert fragment != null;
                         Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
@@ -155,6 +164,7 @@ public class FragmentTendency extends Fragment {
                         break;
 
                     case 0:
+                        frameLayout.setVisibility(View.VISIBLE);
                         fragment = FragmentPieChartOV.newInstance(tranEx, 0);
                         assert fragment != null;
                         Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
@@ -162,6 +172,7 @@ public class FragmentTendency extends Fragment {
                         break;
 
                     case 1:
+                        frameLayout.setVisibility(View.VISIBLE);
                         fragment = FragmentPieChartOV.newInstance(tranIn, 1);
                         assert fragment != null;
                         Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
@@ -178,6 +189,8 @@ public class FragmentTendency extends Fragment {
 
                     case 2:
                         Toast.makeText(getContext(), getString(R.string.feature_developing), Toast.LENGTH_SHORT).show();
+
+                        frameLayout.setVisibility(View.INVISIBLE);
 //                        fragment = FragmentBarChartOv.newInstance(mListTransaction, 2);
 //                        assert fragment != null;
 //                        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
@@ -185,6 +198,7 @@ public class FragmentTendency extends Fragment {
                         break;
 
                     case 0:
+                        frameLayout.setVisibility(View.VISIBLE);
                         fragment = FragmentBarChartOv.newInstance(tranEx, 0);
                         assert fragment != null;
                         Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();
@@ -192,6 +206,7 @@ public class FragmentTendency extends Fragment {
                         break;
 
                     case 1:
+                        frameLayout.setVisibility(View.VISIBLE);
                         fragment = FragmentBarChartOv.newInstance(tranIn, 1);
                         assert fragment != null;
                         Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_tendency, fragment).commit();

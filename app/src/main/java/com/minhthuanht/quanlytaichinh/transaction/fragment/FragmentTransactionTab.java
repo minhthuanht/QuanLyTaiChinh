@@ -196,19 +196,12 @@ public class FragmentTransactionTab extends Fragment {
 
             super.onPreExecute();
 
-//            mDialog = new Dialog(mActivity);
-//            mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//            mDialog.setContentView(R.layout.loading_view);
-//            mListTransaction.clear();
-//            mDialog.setCancelable(false);
-//            mDialog.show();
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-//            mDialog.dismiss();
             scrollToCurrentMonth();
 
         }

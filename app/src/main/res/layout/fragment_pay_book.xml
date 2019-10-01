@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".overviewtransaction.fragment.FragmentPayBook">
+    tools:context=".overviewtransaction.fragment.FragmentPayBook"
+    tools:ignore="ResAuto">
 
     <!-- TODO: Update blank fragment layout -->
     <com.astuetz.PagerSlidingTabStrip
@@ -15,6 +16,7 @@
         app:tabTextColor="@color/colorTabTitle"
         app:tabSelectedTextColor="@color/colorTabTitleSelected"
         app:tabMode="scrollable"
+        app:pstsShouldExpand="true"
         >
     </com.astuetz.PagerSlidingTabStrip>
 
@@ -23,13 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tab_layout">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/view_pager_frame">
-
-    </FrameLayout>
 
     </androidx.viewpager.widget.ViewPager>
 </RelativeLayout>
