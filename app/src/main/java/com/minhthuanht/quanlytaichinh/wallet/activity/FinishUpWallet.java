@@ -46,21 +46,9 @@ public class FinishUpWallet extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    private View.OnClickListener mImgBackListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+    private View.OnClickListener mImgBackListener = view -> backBalanceActivity();
 
-            backBalanceActivity();
-        }
-    };
-
-    private View.OnClickListener mDoneListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-            sendMainActivity();
-        }
-    };
+    private View.OnClickListener mDoneListener = view -> sendMainActivity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

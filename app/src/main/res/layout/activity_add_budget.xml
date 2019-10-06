@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".budget.activity.AddBudgetActivity">
+
+    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/layout1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/margin_8dp">
+
+                <ImageView
+                    android:id="@+id/imgCategory"
+                    android:layout_width="@dimen/layout_width_48dp"
+                    android:layout_height="@dimen/layout_width_48dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_image"
+                     />
+
+                <TextView
+                    android:id="@+id/txtCategoryBudget"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="@dimen/margin_20dp"
+                    android:layout_toRightOf="@+id/imgCategory"
+                    android:hint="Chọn nhóm"
+                    android:textSize="@dimen/text_size_25dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_black"
+                    android:focusable="false"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorStatusBar"
+                    android:layout_below="@+id/txtCategoryBudget"
+                    android:layout_marginLeft="68dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout1"
+                android:layout_marginTop="@dimen/margin_8dp">
+
+                <ImageView
+                    android:id="@+id/imgView2"
+                    android:layout_width="@dimen/layout_width_48dp"
+                    android:layout_height="@dimen/layout_width_48dp"
+                    android:layout_alignParentLeft="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_20dp"
+                    android:layout_toRightOf="@+id/imgView2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mục tiêu" />
+
+                    <com.minhthuanht.quanlytaichinh.view.CurrencyEditText
+                        android:id="@+id/txtMoneyBudget"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_0d"
+                        android:textColor="@color/welcome_activity_background"
+                        android:inputType="number"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout2"
+                android:layout_marginTop="@dimen/margin_8dp">
+
+                <ImageView
+                    android:id="@+id/imgView3"
+                    android:layout_width="@dimen/layout_width_48dp"
+                    android:layout_height="@dimen/layout_width_48dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_event_black_24dp" />
+
+                <TextView
+                    android:id="@+id/txtDateBudget"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="@dimen/margin_20dp"
+                    android:layout_toRightOf="@+id/imgView3"
+                    android:focusable="false"
+                    android:gravity="center_vertical"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorStatusBar"
+                    android:layout_below="@+id/txtDateBudget"
+                    android:layout_marginLeft="68dp"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout3"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:background="@color/colorBackgroundItem">
+
+                <ImageView
+                    android:id="@+id/image_transaction_wallet"
+                    android:layout_width="@dimen/layout_width_48dp"
+                    android:layout_height="@dimen/layout_width_48dp"
+                    android:layout_centerVertical="true"
+
+                    android:src="@drawable/ic_account_balance_wallet_black_24dp" />
+
+                <TextView
+                    android:id="@+id/txtBudgetWallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_width_48dp"
+                    android:layout_marginLeft="@dimen/margin_20dp"
+                    android:layout_toEndOf="@id/image_transaction_wallet"
+                    android:focusable="false"
+                    android:hint="@string/hint_select_wallet"
+                    android:gravity="center_vertical" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorStatusBar"
+                    android:layout_below="@+id/txtBudgetWallet"
+                    android:layout_marginLeft="68dp"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_view1"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            >
+
+            <CheckBox
+                android:id="@+id/chkLoop"
+                android:layout_width="@dimen/layout_width_48dp"
+                android:layout_height="@dimen/layout_width_48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/chkLoop"
+                android:layout_marginLeft="@dimen/margin_8dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lặp lại ngân sách này"
+                    android:textColor="@color/color_black"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ngân sách được tự động lặp lại ở kì hạn tiếp theo"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

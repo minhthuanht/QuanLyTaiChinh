@@ -16,7 +16,7 @@ import java.io.InputStream;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String LOG_TAG = "DB_HELPER";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     private Context mContext;
 

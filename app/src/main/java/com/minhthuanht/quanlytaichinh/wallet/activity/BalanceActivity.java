@@ -28,22 +28,9 @@ public class BalanceActivity extends AppCompatActivity {
 
     private Bundle bundle;
 
-    private View.OnClickListener mImgBackListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+    private View.OnClickListener mImgBackListener = view -> backAddWalletActivity();
 
-            backAddWalletActivity();
-        }
-    };
-
-    private View.OnClickListener mContinueListener = new View.OnClickListener() {
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-        @Override
-        public void onClick(View view) {
-
-            sendFinishUpWallet();
-        }
-    };
+    private View.OnClickListener mContinueListener = view -> sendFinishUpWallet();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

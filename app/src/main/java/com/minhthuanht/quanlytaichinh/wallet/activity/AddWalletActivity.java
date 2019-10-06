@@ -29,22 +29,9 @@ public class AddWalletActivity extends AppCompatActivity {
 
     private String mCurrency;
 
-    private View.OnClickListener mImgBackListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+    private View.OnClickListener mImgBackListener = view -> backChooseCurrencyActivity();
 
-            backChooseCurrencyActivity();
-        }
-    };
-
-    private View.OnClickListener mContinueListener = new View.OnClickListener() {
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-        @Override
-        public void onClick(View view) {
-
-            sendBalanceActivity();
-        }
-    };
+    private View.OnClickListener mContinueListener = view -> sendBalanceActivity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

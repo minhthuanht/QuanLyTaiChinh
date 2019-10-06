@@ -112,4 +112,6 @@
 
     <color name="transparent">#00000000</color>
     <color name="welcome_activity_background">#2db84c</color>
+    <color name="color_black">#000</color>
+    <color name="color_white">#fff</color>
 </resources>

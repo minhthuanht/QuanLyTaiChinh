@@ -20,6 +20,8 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class MTDate implements Serializable {
+    // Tạo đối tượng Calendar mô tả thời điểm hiện tại, (or mình muốn)
+    // class chứa các thương thức để xử lý thời gian : format, set value...
     public static MTDate fromIso8601(String dateString) {
         if (dateString.length() < 28) {
             // manually handle short time-zone offset, i.e. 2016-10-22T02:36:46.000+02
@@ -65,6 +67,8 @@ public class MTDate implements Serializable {
     /**
      * The default constructor uses the current time instance by default.
      */
+
+    // Tạo đối tượng Calendar mô tả thời điểm hiện tại
     public MTDate() {
         mCalendar = Calendar.getInstance();
     }

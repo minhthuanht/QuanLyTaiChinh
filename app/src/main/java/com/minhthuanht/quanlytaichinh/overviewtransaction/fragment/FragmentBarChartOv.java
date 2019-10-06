@@ -18,6 +18,7 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.minhthuanht.quanlytaichinh.R;
 import com.minhthuanht.quanlytaichinh.model.DateRange;
 import com.minhthuanht.quanlytaichinh.model.MTDate;
@@ -135,7 +136,6 @@ public class FragmentBarChartOv extends Fragment {
     private void addBarEntries() {
 
         List<BarEntry> NoOfEmpTrading = new ArrayList<>();
-        List<BarEntry> NoOfEmpTitle = new ArrayList<>();
 
         for (int i = 0; i < mTranding.size(); i++) {
 
@@ -146,7 +146,7 @@ public class FragmentBarChartOv extends Fragment {
         BarDataSet bardataset = new BarDataSet(NoOfEmpTrading, "Biểu đồ giao dịch");
         mBarChart.animateY(4000);
         BarData data = new BarData(bardataset);
-        bardataset.setColors(Color.BLUE);
+        bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
         mBarChart.setData(data);
         mBarChart.setFitBars(true); // make the x-axis fit exactly all bars
         mBarChart.invalidate(); // refresh

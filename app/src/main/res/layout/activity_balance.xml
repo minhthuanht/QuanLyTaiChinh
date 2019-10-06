@@ -8,10 +8,10 @@
 
     <ImageButton
         android:id="@+id/imgBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="@dimen/layout_width_48dp"
+        android:layout_height="@dimen/layout_width_48dp"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:layout_marginTop="@dimen/margin_10dp"
         android:background="@null"
         android:src="@drawable/ic_arrow_back_black_24dp" />
 
@@ -20,35 +20,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgBack"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin_20dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:text="Số tiền còn lại"
-        android:textColor="#000"
-        android:textSize="20dp" />
+        android:text="@string/remaining_amount"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/text_size_20dp" />
 
     <TextView
         android:id="@+id/text2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text1"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin_top_10dp"
         android:gravity="center"
-        android:text="Bạn có bao nhiêu tiền cho ví của bạn" />
+        android:text="@string/money_for_wallet" />
 
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text2"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="@dimen/margin_30dp"
+        android:layout_marginTop="@dimen/margin_25dp"
+        android:layout_marginRight="@dimen/margin_30dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/layout_50dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_attach_money_black_48dp" />
 
@@ -56,18 +56,17 @@
             android:id="@+id/txtInputBalance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text2"
             android:layout_gravity="center"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/layout_50dp"
                 android:background="@null"
-                android:hint="vd:123456789"
+                android:hint="@string/hint_123456789"
                 android:inputType="numberDecimal"
-                android:paddingLeft="10dp"
-                android:textSize="25dp">
+                android:paddingLeft="@dimen/padding_10dp"
+                android:textSize="@dimen/text_size_25dp">
 
             </com.google.android.material.textfield.TextInputEditText>
 
@@ -76,15 +75,15 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="250dp"
+        android:layout_width="@dimen/layout_250dp"
         android:layout_height="wrap_content"
         android:id="@+id/btnContinue"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="30dp"
         android:background="@color/welcome_activity_background"
-        android:text="Tiếp Tục"
+        android:text="@string/continue_"
         android:textColor="#fff"
-        android:textSize="20dp"/>
+        android:textSize="@dimen/text_size_20dp"/>
 
 </RelativeLayout>

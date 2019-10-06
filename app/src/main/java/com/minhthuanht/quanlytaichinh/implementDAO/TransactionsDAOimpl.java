@@ -7,6 +7,8 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.minhthuanht.quanlytaichinh.database.DBHelper;
+import com.minhthuanht.quanlytaichinh.model.Category;
+import com.minhthuanht.quanlytaichinh.model.DateRange;
 import com.minhthuanht.quanlytaichinh.model.Transaction;
 
 import java.util.ArrayList;
@@ -163,6 +165,40 @@ public class TransactionsDAOimpl implements ITransactionsDAO {
     }
 
     @Override
+    public List<Transaction> getStatisticalByCategoryInRange(long wallet_id ,int categoryId , DateRange dateRange) {
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        String sql = "SELECT "
+                + " tblt.trading AS trading "
+                + " ,tblc._id AS categoryId "
+                + " ,tblc.type AS type "
+                + " ,tblt.transaction_date as t_date"
+                + " FROM tbl_transactions tblt "
+                + " INNER JOIN tbl_categories tblc ON tblc._id = tblt.categoryId "
+                + " WHERE (tblt.categoryId = " + categoryId + " OR tblc.parentId = " + categoryId +" )"
+                + " AND tblt.walletId = "+ wallet_id
+                + " AND tblt.transaction_date >= " + dateRange.getDateFrom().getMillis()
+                + " AND tblt.transaction_date <= " + dateRange.getDateTo().getMillis();
+        List<Transaction> list = new ArrayList<>();
+        Cursor cursor = db.rawQuery(sql,null);
+
+        while(cursor.moveToNext()) {
+            Category cat = new Category();
+            float column1 = cursor.getFloat(cursor.getColumnIndex("trading"));
+            int column2 = cursor.getInt(cursor.getColumnIndex("categoryId"));
+            int column3 = cursor.getInt(cursor.getColumnIndex("type"));
+            long column4 = cursor.getLong(cursor.getColumnIndex("t_date"));
+            Transaction data = new Transaction();
+            data.setTransactionTrading(column1);
+            cat.setCategoryID(column2);
+            cat.setCategoryType(column3);
+            data.setTransactionCategoryID(cat);
+            data.setTransactionDate(new Date(column4));
+            list.add(data);
+        }
+        return list;
+    }
+
+    @Override
     public long getIDMax() {
 
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
@@ -180,6 +216,8 @@ public class TransactionsDAOimpl implements ITransactionsDAO {
         assert transaction != null;
         return transaction.getTransactionId();
     }
+
+
 
     private Transaction getTransactionByData(Cursor cursor) {
 

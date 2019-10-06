@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.minhthuanht.quanlytaichinh.account.fragment.FragmentAccountManager;
+import com.minhthuanht.quanlytaichinh.budget.fragment.FragmentBudget;
 import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.FragmentPayBook;
 import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.FragmentTendency;
 import com.minhthuanht.quanlytaichinh.transaction.fragment.FragmentTransactionTab;
@@ -118,70 +119,57 @@ public class MainActivity extends AppCompatActivity
 
             fragmentClass = FragmentTransactionTab.class;
 
+        } else if (id == R.id.nav_chart) {
+            // Handle
+            fragmentClass = FragmentTendency.class;
+
+        } else if (id == R.id.nav_paybook) {
+            // handle
+            fragmentClass = FragmentPayBook.class;
+        } else if (id == R.id.nav_manage) {
+            // Handle
+            Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
+
+        } else if (id == R.id.nav_budget) {
+            // Handle
+            fragmentClass = FragmentBudget.class;
+
+        } else if (id == R.id.nav_share) {
+            // Handle
+            Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
+
+        } else if (id == R.id.nav_send) {
+            // Handle
+            Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
+
+        } else if (id == R.id.nav_account) {
+
+            if (mAuth != null) {
+
+                fragmentClass = FragmentAccountManager.class;
+            }
+
+        } else if (id == R.id.nav_logout) {
+
+            if (mAuth != null) {
+
+                mAuth.signOut();
+                Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+                startActivity(intent);
+            }
+        }
+
+        if (fragmentClass != null) {
+
             try {
+
                 fragment = (Fragment) fragmentClass.newInstance();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, fragment).addToBackStack(null).commit();
+                setTitle(item.getTitle());
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InstantiationException e) {
                 e.printStackTrace();
-            }
-            assert fragment != null;
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, fragment).addToBackStack(null).commit();
-            setTitle(item.getTitle());
-
-        } else {
-            if (id == R.id.nav_chart) {
-                // Handle
-                fragmentClass = FragmentTendency.class;
-
-            } else if (id == R.id.nav_paybook) {
-                // handle
-                fragmentClass = FragmentPayBook.class;
-            } else if (id == R.id.nav_manage) {
-                // Handle
-                Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
-
-            } else if (id == R.id.nav_budget) {
-                // Handle
-                Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
-
-            } else if (id == R.id.nav_share) {
-                // Handle
-                Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
-
-            } else if (id == R.id.nav_send) {
-                // Handle
-                Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
-
-            } else if (id == R.id.nav_account) {
-
-                if (mAuth != null) {
-
-                    fragmentClass = FragmentAccountManager.class;
-                }
-
-            } else if (id == R.id.nav_logout) {
-
-                if (mAuth != null) {
-
-                    mAuth.signOut();
-                    Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
-                    startActivity(intent);
-                }
-            }
-
-            if (fragmentClass != null) {
-
-                try {
-
-                    fragment = (Fragment) fragmentClass.newInstance();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, fragment).addToBackStack(null).commit();
-                    setTitle(item.getTitle());
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                }
             }
         }
 

@@ -70,37 +70,13 @@ public class EditTransactionActivity extends AppCompatActivity {
     private Wallet mCurrentWallet;
 
 
-    private final View.OnClickListener mTransactionCategotyListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+    private final View.OnClickListener mTransactionCategotyListener = view -> selectCategory();
 
-            selectCategory();
-        }
-    };
+    private final View.OnClickListener mTransactionDateListener = view -> selectDate();
 
-    private final View.OnClickListener mTransactionDateListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+    private final View.OnClickListener mChoosePictureListener = view -> choosePicture();
 
-            selectDate();
-        }
-    };
-
-    private final View.OnClickListener mChoosePictureListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-            choosePicture();
-        }
-    };
-
-    private final View.OnClickListener mCapturePictureListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-            capturePicture();
-        }
-    };
+    private final View.OnClickListener mCapturePictureListener = view -> capturePicture();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override

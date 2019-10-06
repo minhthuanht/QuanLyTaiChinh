@@ -88,6 +88,7 @@
     <string name="nextyear">Năm tới</string>
     <string name="add_budget">Thêm Ngân Sách</string>
     <string name="remain_prefix">Còn</string>
+    <string name="day">ngày</string>
     <string name="notification_system_developing">Hệ thống đang phát triển</string>
     <string name="add_transaction">Thêm giao dịch</string>
     <string name="select_category">Chọn nhóm</string>
@@ -123,4 +124,27 @@
     <string name="add">Thêm</string>
     <string name="account_information">Thông tin tài khoản</string>
     <string name="log_out">Đăng xuất</string>
+    <string name="hint_0d">0đ</string>
+    <string name="hint_select_category">Chọn loại giao dịch</string>
+    <string name="hint_note">Ghi chú</string>
+    <string name="text_today">Hôm nay</string>
+    <string name="hint_select_wallet">Chọn ví</string>
+    <string name="text_text">Quản Lý Tài Chính sẽ giúp bạn quản lý chi tiêu, ví tiền của bạn để cân đối việc sử dụng tiền của bạn.</string>
+    <string name="remaining_amount">Số tiền còn lại</string>
+    <string name="money_for_wallet">Bạn có bao nhiêu tiền cho ví của bạn</string>
+    <string name="hint_123456789">vd:123456789</string>
+    <string name="continue_">Tiếp Tục</string>
+    <string name="select_type_money">Lựa chọn loại tiền tệ cho bạn</string>
+    <string name="you_can_select_after">Bạn có thể chọn sau</string>
+    <string name="select_time">Chọn thời gian</string>
+    <string name="time_out">Đã hết hạn</string>
+    <string name="overspending">Bội chi</string>
+    <string name="remain">Còn lại</string>
+    <string name="budget_detail">Chi tiết ngân sách</string>
+    <string name="title_delete_budget">Xóa ngân sách này?</string>
+    <string name="messing_delete">Bạn có chắc chắn muốn xóa?</string>
+    <string name="comfirm">Đồng ý</string>
+    <string name="no">Không</string>
+    <string name="title_delete_transaction">Xóa giao dịch này?</string>
+    <string name="change_budget">Thay đổi ngân sách</string>
 </resources>

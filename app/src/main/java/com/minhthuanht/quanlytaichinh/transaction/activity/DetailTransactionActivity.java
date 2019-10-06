@@ -176,9 +176,9 @@ public class DetailTransactionActivity extends AppCompatActivity {
     private void deleteTransaction() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Xóa giao dịch này?");
-        builder.setMessage("Bạn có chắc chắn muốn xóa?");
-        builder.setPositiveButton("Đồng ý", (dialogInterface, i) -> {
+        builder.setTitle(getResources().getString(R.string.title_delete_transaction));
+        builder.setMessage(getResources().getString(R.string.messing_delete));
+        builder.setPositiveButton(getResources().getString(R.string.comfirm), (dialogInterface, i) -> {
             ITransactionsDAO iTransactionsDAO = new TransactionsDAOimpl(DetailTransactionActivity.this);
             iTransactionsDAO.deleteTransaction(mTransaction);
             setResult(RESULT_OK);
@@ -201,7 +201,7 @@ public class DetailTransactionActivity extends AppCompatActivity {
             iWalletsDAO.updateWallet(wallet);
             finish();
         });
-        builder.setNegativeButton("Không", null);
+        builder.setNegativeButton(getResources().getString(R.string.no), null);
         builder.show();
     }
 }

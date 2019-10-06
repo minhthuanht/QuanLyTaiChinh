@@ -25,7 +25,7 @@ import java.util.Objects;
 
 public class SelectCategoryActivity extends AppCompatActivity {
 
-    private CategoriesPageAdapter.ICategoriesAdapter mAdapterInterface = category -> sendAddTransaction(category);
+    private CategoriesPageAdapter.ICategoriesAdapter mAdapterInterface = category -> sendCategoryClicked(category);
 
     public static final String RESULT_SELECT_CATEGORY = "SelectCategoryActivity";
 
@@ -87,7 +87,7 @@ public class SelectCategoryActivity extends AppCompatActivity {
     }
 
 
-    private void sendAddTransaction(Category category) {
+    private void sendCategoryClicked(Category category) {
 
         Intent intent = getIntent();
         intent.putExtra(RESULT_SELECT_CATEGORY, category);

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".budget.activity.DetailBudgetActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/layout1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/margin_8dp">
+
+                <ImageView
+                    android:id="@+id/imgCategory"
+                    android:layout_width="@dimen/layout_width_48dp"
+                    android:layout_height="@dimen/layout_width_48dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_image"
+                    />
+
+                <TextView
+                    android:id="@+id/txtCategoryBudget"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="@dimen/margin_20dp"
+                    android:layout_toRightOf="@+id/imgCategory"
+                    android:hint="Chọn nhóm"
+                    android:textSize="@dimen/text_size_20dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_black"
+                    android:focusable="false"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout1"
+                android:layout_marginTop="@dimen/margin_8dp">
+
+                <ImageView
+                    android:id="@+id/imgView2"
+                    android:layout_width="@dimen/layout_width_48dp"
+                    android:layout_height="@dimen/layout_width_36dp"
+                    android:layout_alignParentLeft="true" />
+
+
+                    <com.minhthuanht.quanlytaichinh.view.CurrencyTextView
+                        android:id="@+id/txtMoneyBudget"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_0d"
+                        android:inputType="number"
+                        android:layout_marginLeft="@dimen/margin_20dp"
+                        android:layout_toRightOf="@+id/imgView2"
+                        android:gravity="left"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/text_size_20dp"
+                        android:textColor="@color/color_black"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout2"
+                android:layout_marginTop="@dimen/margin_8dp">
+
+                <ImageView
+                    android:id="@+id/imgView5"
+                    android:layout_width="@dimen/layout_width_48dp"
+                    android:layout_height="@dimen/layout_width_48dp"
+                    android:layout_alignParentLeft="true" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout6"
+                    android:layout_toRightOf="@+id/imgView5"
+                    android:layout_marginLeft="@dimen/margin_20dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Đã chi"/>
+
+                        <com.minhthuanht.quanlytaichinh.view.CurrencyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtMoneyDebt"
+                            android:textColor="@color/r_900"
+                            android:layout_marginTop="5dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:orientation="vertical"
+                        android:id="@+id/layout7"
+                        android:layout_marginRight="@dimen/margin_20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Đã chi"
+                            android:id="@+id/txtTitleMoney"
+                            android:layout_marginTop="5dp"/>
+
+
+                        <com.minhthuanht.quanlytaichinh.view.CurrencyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtMoneyRemain"
+                            android:textColor="@color/color_black"
+                            />
+
+
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/prgBudget"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/layout7"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="@dimen/spacing_medium"
+                        android:layout_marginBottom="@dimen/spacing_small"
+                        android:max="100" />
+
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout5"
+                android:layout_marginTop="@dimen/margin_8dp">
+
+                <ImageView
+                    android:id="@+id/imgView3"
+                    android:layout_width="@dimen/layout_width_48dp"
+                    android:layout_height="@dimen/layout_width_48dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_event_black_24dp" />
+
+                <TextView
+                    android:id="@+id/txtDateBudget"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="@dimen/margin_20dp"
+                    android:layout_toRightOf="@+id/imgView3"
+                    android:focusable="false"
+                    android:gravity="center_vertical"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout3"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:id="@+id/layout8"
+                >
+
+                <ImageView
+                    android:id="@+id/image_transaction_wallet"
+                    android:layout_width="@dimen/layout_width_48dp"
+                    android:layout_height="@dimen/layout_width_48dp"
+                    android:layout_centerVertical="true"
+
+                    android:src="@drawable/ic_account_balance_wallet_black_24dp" />
+
+                <TextView
+                    android:id="@+id/txtBudgetWallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_width_48dp"
+                    android:layout_marginLeft="@dimen/margin_20dp"
+                    android:layout_toEndOf="@id/image_transaction_wallet"
+                    android:focusable="false"
+                    android:hint="@string/hint_select_wallet"
+                    android:gravity="center_vertical" />
+
+            </RelativeLayout>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lineChart"
+                android:layout_below="@+id/layout8"
+                android:layout_marginRight="@dimen/margin_20dp">
+
+            </com.github.mikephil.charting.charts.LineChart>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout9"
+                android:layout_below="@+id/lineChart"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nên chi hàng ngày"/>
+
+                    <com.minhthuanht.quanlytaichinh.view.CurrencyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtMoneyDay"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/color_black"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentRight="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dự kiến chi tiêu"/>
+
+                    <com.minhthuanht.quanlytaichinh.view.CurrencyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtExpected"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/color_black"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout10"
+                android:layout_below="@id/layout9"
+                android:layout_marginTop="@dimen/margin_20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text1"
+                    android:text="Thực tế chi tiêu hàng ngày"
+                    android:gravity="center"/>
+
+                <com.minhthuanht.quanlytaichinh.view.CurrencyTextView
+                    android:id="@+id/txtCurrentDebt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text1"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:textColor="@color/color_black"
+                    />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

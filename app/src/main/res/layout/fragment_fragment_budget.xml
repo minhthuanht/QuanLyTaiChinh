@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".overviewtransaction.fragment.FragmentPayBook"
-    tools:ignore="ResAuto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".budget.fragment.FragmentBudget">
 
     <!-- TODO: Update blank fragment layout -->
+
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        app:pstsShouldExpand="true"
-        app:tabMode="scrollable"
+        app:tabTextColor="@color/colorTabTitle"
         app:tabSelectedTextColor="@color/colorTabTitleSelected"
-        app:tabTextColor="@color/colorTabTitle">
-
+        app:tabMode="scrollable"
+        app:pstsShouldExpand="true"
+        >
     </com.astuetz.PagerSlidingTabStrip>
 
     <androidx.viewpager.widget.ViewPager
@@ -26,7 +26,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tab_layout">
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/frame_layout_budget">
+
+        </FrameLayout>
+
     </androidx.viewpager.widget.ViewPager>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/elevation_8"
+        android:src="@drawable/ic_add"
+        app:fabSize="normal"/>
 
 </RelativeLayout>

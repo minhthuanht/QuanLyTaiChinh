@@ -28,21 +28,9 @@ public class ChooseCurrencyActivity extends AppCompatActivity {
 
     private String mCurrency;
 
-    private View.OnClickListener mImgBackListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+    private View.OnClickListener mImgBackListener = view -> backLoginActivity();
 
-            backLoginActivity();
-        }
-    };
-
-    private View.OnClickListener mContinueListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-            sendAddWalletActivity();
-        }
-    };
+    private View.OnClickListener mContinueListener = view -> sendAddWalletActivity();
 
     private AdapterView.OnItemSelectedListener mSpinnerCurrencyListener = new AdapterView.OnItemSelectedListener() {
         @Override

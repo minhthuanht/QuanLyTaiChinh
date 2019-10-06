@@ -30,6 +30,7 @@ import com.minhthuanht.quanlytaichinh.wallet.activity.ChooseCurrencyActivity;
 
 import java.util.Objects;
 
+@RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
@@ -46,34 +47,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    private final View.OnClickListener mLoginListener = new View.OnClickListener() {
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-        @Override
-        public void onClick(View view) {
-
-            loginHomeUser();
-
-        }
-    };
+    private final View.OnClickListener mLoginListener = view -> loginHomeUser();
 
 
-    private final View.OnClickListener mRegistrationListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-            sendRegistrationActivity();
-        }
-    };
+    private final View.OnClickListener mRegistrationListener = view -> sendRegistrationActivity();
 
 
-    private final View.OnClickListener mForgotPasswordListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-            sendForgotPasswordActivity();
-
-        }
-    };
+    private final View.OnClickListener mForgotPasswordListener = view -> sendForgotPasswordActivity();
 
 
     @Override
@@ -159,24 +139,21 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "signInWithEmail:success");
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                updateUI(user);
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-                                updateUI(null);
-                            }
-
-                            // ...
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            updateUI(null);
                         }
+
+                        // ...
                     });
 
         }

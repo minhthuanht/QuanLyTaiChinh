@@ -9,10 +9,10 @@
 
     <ImageButton
         android:id="@+id/imgBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="@dimen/layout_width_48dp"
+        android:layout_height="@dimen/layout_width_48dp"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:layout_marginTop="@dimen/margin_10dp"
         android:background="@null"
         android:src="@drawable/ic_arrow_back_black_24dp" />
 
@@ -21,12 +21,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgBack"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin_top_20dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:text="Lựa chọn loại tiền tệ cho bạn"
-        android:textColor="#000"
-        android:textSize="20dp" />
+        android:text="@string/select_type_money"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/text_size_20dp" />
 
     <TextView
         android:id="@+id/text2"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/text1"
         android:gravity="center"
-        android:text="Bạn có thể chọn sau" />
+        android:text="@string/you_can_select_after" />
 
     <Spinner
         android:id="@+id/spinnerCurrency"
@@ -47,14 +47,14 @@
 
     <Button
         android:id="@+id/btnContinue"
-        android:layout_width="250dp"
+        android:layout_width="@dimen/layout_250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="@dimen/margin_30dp"
         android:background="@color/welcome_activity_background"
-        android:text="Tiếp Tục"
-        android:textColor="#fff"
-        android:textSize="20dp" />
+        android:text="@string/continue_"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/text_size_20dp" />
 
 </RelativeLayout>

@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="false"
@@ -14,8 +15,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".transaction.activity.EditTransactionActivity"
-            android:label="@string/edit_transaction"></activity>
+        <activity android:name=".budget.activity.EditBudgetActivity"
+            android:label="@string/change_budget"></activity>
+        <activity
+            android:name=".budget.activity.DetailBudgetActivity"
+            android:label="@string/budget_detail" />
+        <activity
+            android:name=".budget.activity.SelectTimeActivity"
+            android:label="@string/select_time" />
+        <activity
+            android:name=".budget.activity.AddBudgetActivity"
+            android:label="@string/add_budget" />
+        <activity
+            android:name=".transaction.activity.EditTransactionActivity"
+            android:label="@string/edit_transaction" />
         <activity
             android:name=".transaction.activity.DetailTransactionActivity"
             android:label="@string/detail_transaction" />
