@@ -1,12 +1,9 @@
 package com.minhthuanht.quanlytaichinh.overviewtransaction.fragment;
 
-
-import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
+
 
 import android.os.Parcelable;
 import android.view.LayoutInflater;
@@ -15,9 +12,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.minhthuanht.quanlytaichinh.R;
 import com.minhthuanht.quanlytaichinh.model.DateRange;
@@ -134,30 +135,66 @@ public class FragmentBarChartOv extends Fragment {
     }
 
     private void addBarEntries() {
+//
+//        List<BarEntry> NoOfEmpTrading = new ArrayList<>();
+//
+//        for (int i = 0; i < mTranding.size(); i++) {
+//
+//            NoOfEmpTrading.add(new BarEntry(i + 1, mTranding.get(i)));
+//        }
+//
+//
+//
+//        BarDataSet bardataset = new BarDataSet(NoOfEmpTrading, "Biểu đồ giao dịch");
+//
+//        BarData data = new BarData(bardataset);
+//        bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        BarData data = new BarData(getDataSet());
+
+        mTitleMonth.add("thg1");
+        mTitleMonth.add("thg2");
+        mTitleMonth.add("thg3");
+        mTitleMonth.add("thg4");
+        mTitleMonth.add("thg5");
+        mTitleMonth.add("thg6");
+        mTitleMonth.add("thg7");
+        mTitleMonth.add("thg8");
+        mTitleMonth.add("thg9");
+        mTitleMonth.add("thg10");
+        mTitleMonth.add("thg11");
+        mTitleMonth.add("thg12");
+
+        XAxis xAxis = mBarChart.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(mTitleMonth));
+        xAxis.setDrawGridLines(false);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+//
+        mBarChart.setData(data);
+        mBarChart.animateY(4000);
+        mBarChart.setFitBars(true); // make the x-axis fit exactly all bars
+        mBarChart.invalidate(); // refresh
+    }
+
+    private IBarDataSet getDataSet() {
 
         List<BarEntry> NoOfEmpTrading = new ArrayList<>();
 
         for (int i = 0; i < mTranding.size(); i++) {
 
-            NoOfEmpTrading.add(new BarEntry(i + 1, mTranding.get(i)));
-
+            NoOfEmpTrading.add(new BarEntry(i, mTranding.get(i)));
         }
 
         BarDataSet bardataset = new BarDataSet(NoOfEmpTrading, "Biểu đồ giao dịch");
-        mBarChart.animateY(4000);
-        BarData data = new BarData(bardataset);
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
-        mBarChart.setData(data);
-        mBarChart.setFitBars(true); // make the x-axis fit exactly all bars
-        mBarChart.invalidate(); // refresh
+
+
+        return bardataset;
     }
+
 
     private void getTransactionOfMonth(DateRange period) {
 
-        MTDate mtDate = period.getDateFrom();
-        int month = mtDate.getMonth();
-
-        @SuppressLint("DefaultLocale") String title = String.format("%d", month + 1);
         List<Transaction> transactions = filterTransactions(period, mItems);
         float trading = 0;
         if (transactions != null) {
@@ -169,7 +206,6 @@ public class FragmentBarChartOv extends Fragment {
 
         }
         mTranding.add(trading);
-        mTitleMonth.add(title);
 
     }
 

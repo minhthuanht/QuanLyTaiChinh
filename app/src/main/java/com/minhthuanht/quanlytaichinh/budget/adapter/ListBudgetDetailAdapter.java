@@ -90,6 +90,10 @@ public class ListBudgetDetailAdapter extends RecyclerView.Adapter<ListBudgetDeta
 
         private ProgressBar mPrgBudget;
 
+        private TextView mTextBudget1;
+
+        private TextView mTextBudget2;
+
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -102,6 +106,8 @@ public class ListBudgetDetailAdapter extends RecyclerView.Adapter<ListBudgetDeta
             mCurrent = itemView.findViewById(R.id.current);
             mAmountLeft = itemView.findViewById(R.id.txtAmountLeft);
             mPrgBudget = itemView.findViewById(R.id.prgBudget);
+            mTextBudget1 = itemView.findViewById(R.id.textBudget1);
+            mTextBudget2 = itemView.findViewById(R.id.textBudget2);
 
             itemView.setOnClickListener(view -> mIItemClikedDAO.itemClicked(mItems.get(getAdapterPosition())));
 
@@ -143,6 +149,8 @@ public class ListBudgetDetailAdapter extends RecyclerView.Adapter<ListBudgetDeta
 
             else {
 
+                mTextBudget1.setVisibility(View.GONE);
+                mTextBudget2.setVisibility(View.GONE);
                 mTimeLeft.setText(R.string.time_out);
             }
 
