@@ -68,7 +68,7 @@ public class MTDate implements Serializable {
      * The default constructor uses the current time instance by default.
      */
 
-    // Tạo đối tượng Calendar mô tả thời điểm hiện tại
+    // Tạo đối tượng Calendar mô tả thời điểm hiện tại(or mình muốn)
     public MTDate() {
         mCalendar = Calendar.getInstance();
     }

@@ -147,4 +147,7 @@
     <string name="no">Không</string>
     <string name="title_delete_transaction">Xóa giao dịch này?</string>
     <string name="change_budget">Thay đổi ngân sách</string>
+    <string name="date_start">Ngày bắt đầu</string>
+    <string name="date_end">Ngày kết thúc</string>
+    <string name="select_date">Vui lòng chọn ngày!</string>
 </resources>

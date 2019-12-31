@@ -17,6 +17,7 @@ import com.minhthuanht.quanlytaichinh.R;
 
 import java.util.Objects;
 
+@RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class AddWalletActivity extends AppCompatActivity {
 
     private static final String TAG = "AddWalletActivity";

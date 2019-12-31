@@ -1,12 +1,15 @@
 package com.minhthuanht.quanlytaichinh;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 
+import androidx.annotation.RequiresApi;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
@@ -14,8 +17,13 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import com.minhthuanht.quanlytaichinh.account.fragment.FragmentAccountManager;
 import com.minhthuanht.quanlytaichinh.budget.fragment.FragmentBudget;
+import com.minhthuanht.quanlytaichinh.dialog.fragment.FragmentDialogDate;
+import com.minhthuanht.quanlytaichinh.implementDAO.ISearchTransaction;
+import com.minhthuanht.quanlytaichinh.implementDAO.SearchTransactionImpl;
+import com.minhthuanht.quanlytaichinh.model.Transaction;
 import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.FragmentPayBook;
 import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.FragmentTendency;
+import com.minhthuanht.quanlytaichinh.transaction.fragment.FragmentListTransaction;
 import com.minhthuanht.quanlytaichinh.transaction.fragment.FragmentTransactionTab;
 
 
@@ -23,6 +31,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -32,16 +41,30 @@ import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth mAuth;
 
+    private ISearchTransaction mISearchTransaction;
+
+    private final FragmentDialogDate.DialogFragmentCall mDialogFragmentCall = transactionList -> {
+        FragmentListTransaction fragment = FragmentListTransaction.newInstance(transactionList);
+        Log.e("error", transactionList.size()+"");
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.main_frame_layout, fragment).addToBackStack(null).commit();
+
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mISearchTransaction = new SearchTransactionImpl(MainActivity.this);
         mAuth = FirebaseAuth.getInstance();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -90,6 +113,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -98,8 +122,27 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.timkiem_thu) {
+            List<Transaction> transactionList = new ArrayList<>();
+            transactionList.addAll(mISearchTransaction.searchTransaction(2));
+            transactionList.addAll(mISearchTransaction.searchTransaction(4));
+            FragmentListTransaction fragment = FragmentListTransaction.newInstance(transactionList);
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, fragment).addToBackStack(null).commit();
+
+        } else if (id == R.id.timkiem_chi) {
+            List<Transaction> transactionList = new ArrayList<>();
+            transactionList.addAll(mISearchTransaction.searchTransaction(1));
+            transactionList.addAll(mISearchTransaction.searchTransaction(3));
+            FragmentListTransaction fragment = FragmentListTransaction.newInstance(transactionList);
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, fragment).addToBackStack(null).commit();
+
+        } else if (id == R.id.search_by_date) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            FragmentDialogDate fm = FragmentDialogDate.newInstance();
+            fm.setDialogFragmentCall(mDialogFragmentCall);
+            fm.show(ft, "dialog");
+
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -112,7 +155,7 @@ public class MainActivity extends AppCompatActivity
 
         int id = item.getItemId();
 
-        Fragment fragment = null;
+        Fragment fragment;
         Class fragmentClass = null;
 
         if (id == R.id.nav_transaction) {
@@ -167,7 +210,9 @@ public class MainActivity extends AppCompatActivity
                 String backStateName = fragment.getClass().getName();
 
                 FragmentManager manager = getSupportFragmentManager();
-                boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0); // fragment is exist , pop to it
+
+                boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
+                //popBackStackImmediate * request to pop, but the action will not be performed until the application returns to its event loop.
 
                 if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) { //fragment not in back stack, create it.
                     FragmentTransaction ft = manager.beginTransaction();
