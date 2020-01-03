@@ -20,6 +20,7 @@ import com.minhthuanht.quanlytaichinh.R;
 import com.minhthuanht.quanlytaichinh.model.Budget;
 import com.minhthuanht.quanlytaichinh.model.DateRange;
 import com.minhthuanht.quanlytaichinh.model.MTDate;
+import com.minhthuanht.quanlytaichinh.notification.BudgetNotification;
 import com.minhthuanht.quanlytaichinh.view.CurrencyTextView;
 
 import java.io.IOException;
@@ -29,9 +30,11 @@ import java.util.List;
 
 public class ListBudgetDetailAdapter extends RecyclerView.Adapter<ListBudgetDetailAdapter.ViewHolder> {
 
-    public interface IItemClikedDAO{
+    public interface IItemClikedDAO {
 
         void itemClicked(Budget budget);
+
+        boolean itemLongClicked(Budget budget);
     }
 
     private IItemClikedDAO mIItemClikedDAO;
@@ -39,6 +42,8 @@ public class ListBudgetDetailAdapter extends RecyclerView.Adapter<ListBudgetDeta
     private List<Budget> mItems = new ArrayList<>();
 
     private AssetManager mAssetManager;
+
+    private BudgetNotification mBudgetNotification;
 
     public ListBudgetDetailAdapter(List<Budget> budgets, IItemClikedDAO itemClikedDAO) {
 
@@ -54,6 +59,7 @@ public class ListBudgetDetailAdapter extends RecyclerView.Adapter<ListBudgetDeta
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         Context context = parent.getContext();
+        mBudgetNotification = new BudgetNotification(context);
         mAssetManager = context.getAssets();
         View view = LayoutInflater.from(context).inflate(R.layout.item_budget, parent, false);
         return new ViewHolder(view);
@@ -110,6 +116,7 @@ public class ListBudgetDetailAdapter extends RecyclerView.Adapter<ListBudgetDeta
             mTextBudget2 = itemView.findViewById(R.id.textBudget2);
 
             itemView.setOnClickListener(view -> mIItemClikedDAO.itemClicked(mItems.get(getAdapterPosition())));
+            itemView.setOnLongClickListener(view -> mIItemClikedDAO.itemLongClicked(mItems.get(getAdapterPosition())));
 
 
         }
@@ -145,22 +152,28 @@ public class ListBudgetDetailAdapter extends RecyclerView.Adapter<ListBudgetDeta
             if (remainDays > 0) {
 
                 mTimeLeft.setText(String.valueOf(remainDays));
-            }
-
-            else {
+                if(remainDays <= 1){
+                    mBudgetNotification.notifyBudgetExpired(budget);
+                }
+            } else {
 
                 mTextBudget1.setVisibility(View.GONE);
                 mTextBudget2.setVisibility(View.GONE);
                 mTimeLeft.setText(R.string.time_out);
-            }
 
+
+            }
 
 
             float remain = budget.getAmount() - budget.getSpent();
             if (remain < 0) {
                 remain = Math.abs(remain);
                 mCurrent.setText(R.string.overspending);
+
             } else {
+                if (remain <= budget.getAmount() / 10) {
+                    mBudgetNotification.notifyBudgetOverSpend(budget);
+                }
                 mCurrent.setText(R.string.remain);
             }
             mAmountLeft.setText(String.valueOf(remain));

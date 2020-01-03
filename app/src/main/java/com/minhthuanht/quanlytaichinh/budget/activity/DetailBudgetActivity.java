@@ -49,6 +49,7 @@ public class DetailBudgetActivity extends AppCompatActivity {
 
     private static final int REQUEST_EDIT_BUDGET = 222;
 
+
     private Budget mBudget = new Budget();
 
     private IBudgetDAO mIBudgetDAO;

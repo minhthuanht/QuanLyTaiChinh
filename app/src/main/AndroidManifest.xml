@@ -15,8 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".budget.activity.EditBudgetActivity"
-            android:label="@string/change_budget"></activity>
+        <activity
+            android:name=".setting.activity.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".budget.activity.EditBudgetActivity"
+            android:label="@string/change_budget" />
         <activity
             android:name=".budget.activity.DetailBudgetActivity"
             android:label="@string/budget_detail" />

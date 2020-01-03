@@ -92,7 +92,7 @@ public class FragmentBarChartOv extends Fragment {
         mBarChart = view.findViewById(R.id.barchartItems);
         mDate = view.findViewById(R.id.txtDate);
 //        RecyclerView mRecycleViewOV = view.findViewById(R.id.recycleViewOV);
-        mDateRange = new DateRange(new MTDate(mCalendar.get(Calendar.YEAR), 0, 1).firstDayOfMonth().setTimeToBeginningOfDay(), new MTDate());
+        mDateRange = new DateRange(new MTDate(mCalendar.get(Calendar.YEAR), 0, 1).firstDayOfMonth().setTimeToBeginningOfDay(), new MTDate(mCalendar.get(Calendar.YEAR),11,31 ).lastDayOfMonth().setTimeToEndOfDay());
 
         onBindView();
         initEvents();

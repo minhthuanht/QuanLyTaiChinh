@@ -23,6 +23,7 @@ import com.minhthuanht.quanlytaichinh.implementDAO.SearchTransactionImpl;
 import com.minhthuanht.quanlytaichinh.model.Transaction;
 import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.FragmentPayBook;
 import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.FragmentTendency;
+import com.minhthuanht.quanlytaichinh.setting.activity.SettingsActivity;
 import com.minhthuanht.quanlytaichinh.transaction.fragment.FragmentListTransaction;
 import com.minhthuanht.quanlytaichinh.transaction.fragment.FragmentTransactionTab;
 
@@ -172,7 +173,9 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = FragmentPayBook.class;
         } else if (id == R.id.nav_manage) {
             // Handle
-            Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+
 
         } else if (id == R.id.nav_budget) {
             // Handle
@@ -180,11 +183,11 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
             // Handle
-            Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "chưa xử lý", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_send) {
             // Handle
-            Toast.makeText(this, "not handle", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "chưa xử lý", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_account) {
 

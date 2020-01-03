@@ -20,15 +20,12 @@ public class SelectTimeActivity extends AppCompatActivity {
     public static final String CODE_RESPONSE = "response_AddBudgetActivity";
 
 
-    private SelectTimeAdapter.IItemClickedInterface mItemClickedInterface = new SelectTimeAdapter.IItemClickedInterface() {
-        @Override
-        public void itemClicked(DateRange dateRange) {
+    private SelectTimeAdapter.IItemClickedInterface mItemClickedInterface = dateRange -> {
 
-            Intent intent = getIntent();
-            intent.putExtra(CODE_RESPONSE, dateRange);
-            setResult(RESULT_OK, intent);
-            finish();
-        }
+        Intent intent = getIntent();
+        intent.putExtra(CODE_RESPONSE, dateRange);
+        setResult(RESULT_OK, intent);
+        finish();
     };
 
     private List<String> mTimeBudget = new ArrayList<>();
