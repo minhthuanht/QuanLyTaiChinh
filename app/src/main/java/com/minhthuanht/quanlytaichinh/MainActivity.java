@@ -23,7 +23,6 @@ import com.minhthuanht.quanlytaichinh.implementDAO.SearchTransactionImpl;
 import com.minhthuanht.quanlytaichinh.model.Transaction;
 import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.FragmentPayBook;
 import com.minhthuanht.quanlytaichinh.overviewtransaction.fragment.FragmentTendency;
-import com.minhthuanht.quanlytaichinh.setting.activity.SettingsActivity;
 import com.minhthuanht.quanlytaichinh.transaction.fragment.FragmentListTransaction;
 import com.minhthuanht.quanlytaichinh.transaction.fragment.FragmentTransactionTab;
 
@@ -173,8 +172,7 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = FragmentPayBook.class;
         } else if (id == R.id.nav_manage) {
             // Handle
-            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-            startActivity(intent);
+            Log.d("QuanLyTaiChinh","coding...");
 
 
         } else if (id == R.id.nav_budget) {
