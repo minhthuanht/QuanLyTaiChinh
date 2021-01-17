@@ -136,7 +136,7 @@ public class EditTransactionActivity extends AppCompatActivity {
 
         mCalender = Calendar.getInstance();
 
-        mCurrentWallet = mTransaction.getTrasactionWalletID();
+        mCurrentWallet = mTransaction.getTransactionWalletID();
         mCategory = mTransaction.getTransactionCategoryID();
         mDate = mTransaction.getTransactionDate();
 
@@ -254,7 +254,7 @@ public class EditTransactionActivity extends AppCompatActivity {
         transaction.setTransactionDate(mDate);
         transaction.setTransactionNote(note);
         transaction.setTransactionCategoryID(mCategory);
-        transaction.setTrasactionWalletID(mCurrentWallet);
+        transaction.setTransactionWalletID(mCurrentWallet);
 
         iTransactionsDAO = new TransactionsDAOimpl(this);
         iTransactionsDAO.updateTransaction(transaction);

@@ -12,7 +12,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,8 +24,6 @@ import com.minhthuanht.quanlytaichinh.implementDAO.WalletsDAOimpl;
 import com.minhthuanht.quanlytaichinh.model.MTDate;
 import com.minhthuanht.quanlytaichinh.model.Transaction;
 import com.minhthuanht.quanlytaichinh.model.Wallet;
-import com.minhthuanht.quanlytaichinh.view.CurrencyEditText;
-import com.minhthuanht.quanlytaichinh.view.CurrencyTextView;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -114,7 +111,7 @@ public class DetailTransactionActivity extends AppCompatActivity {
 
             mTransactionNote.setText(transaction.getTransactionNote());
             mTransactionDate.setText(new MTDate(transaction.getTransactionDate()).toIsoDateShortTimeString());
-            mTransactionWallet.setText(transaction.getTrasactionWalletID().getWalletName());
+            mTransactionWallet.setText(transaction.getTransactionWalletID().getWalletName());
         }
     }
 
@@ -185,7 +182,7 @@ public class DetailTransactionActivity extends AppCompatActivity {
 
             IWalletsDAO iWalletsDAO = new WalletsDAOimpl(DetailTransactionActivity.this);
 
-            Wallet wallet = mTransaction.getTrasactionWalletID();
+            Wallet wallet = mTransaction.getTransactionWalletID();
 
             float balanceCurent = wallet.getWalletBalance();
 

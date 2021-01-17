@@ -13,28 +13,28 @@ public class Transaction implements Parcelable {
     private Date transactionDate;
     private String transactionNote;
     private Category transactionCategoryID;
-    private Wallet trasactionWalletID;
+    private Wallet transactionWalletID;
 
     public Transaction() {
     }
 
-    public Transaction(int transactionId, String transactionCurrency, float transactionTrading, Date transactionDate, String transactionNote, Category transactionCategoryID, Wallet trasactionWalletID) {
+    public Transaction(int transactionId, String transactionCurrency, float transactionTrading, Date transactionDate, String transactionNote, Category transactionCategoryID, Wallet transactionWalletID) {
         this.transactionId = transactionId;
         this.transactionCurrency = transactionCurrency;
         this.transactionTrading = transactionTrading;
         this.transactionDate = transactionDate;
         this.transactionNote = transactionNote;
         this.transactionCategoryID = transactionCategoryID;
-        this.trasactionWalletID = trasactionWalletID;
+        this.transactionWalletID = transactionWalletID;
     }
 
-    public Transaction(String transactionCurrency, float transactionTrading, Date transactionDate, String transactionNote, Category transactionCategoryID, Wallet trasactionWalletID) {
+    public Transaction(String transactionCurrency, float transactionTrading, Date transactionDate, String transactionNote, Category transactionCategoryID, Wallet transactionWalletID) {
         this.transactionCurrency = transactionCurrency;
         this.transactionTrading = transactionTrading;
         this.transactionDate = transactionDate;
         this.transactionNote = transactionNote;
         this.transactionCategoryID = transactionCategoryID;
-        this.trasactionWalletID = trasactionWalletID;
+        this.transactionWalletID = transactionWalletID;
     }
 
     private Transaction(Parcel in) {
@@ -44,7 +44,7 @@ public class Transaction implements Parcelable {
         transactionNote = in.readString();
         transactionDate = (Date) in.readSerializable();
         transactionCategoryID = in.readParcelable(Category.class.getClassLoader());
-        trasactionWalletID = in.readParcelable(Wallet.class.getClassLoader());
+        transactionWalletID = in.readParcelable(Wallet.class.getClassLoader());
     }
 
     @Override
@@ -55,7 +55,7 @@ public class Transaction implements Parcelable {
         dest.writeString(transactionNote);
         dest.writeSerializable(transactionDate);
         dest.writeParcelable(transactionCategoryID, flags);
-        dest.writeParcelable(trasactionWalletID, flags);
+        dest.writeParcelable(transactionWalletID, flags);
     }
 
     @Override
@@ -123,12 +123,12 @@ public class Transaction implements Parcelable {
         this.transactionCategoryID = transactionCategoryID;
     }
 
-    public Wallet getTrasactionWalletID() {
-        return trasactionWalletID;
+    public Wallet getTransactionWalletID() {
+        return transactionWalletID;
     }
 
-    public void setTrasactionWalletID(Wallet trasactionWalletID) {
-        this.trasactionWalletID = trasactionWalletID;
+    public void setTransactionWalletID(Wallet transactionWalletID) {
+        this.transactionWalletID = transactionWalletID;
     }
 
     public float getMoneyTradingWithSign() {

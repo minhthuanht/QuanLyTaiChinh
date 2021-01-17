@@ -3,7 +3,6 @@ package com.minhthuanht.quanlytaichinh.implementDAO;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.minhthuanht.quanlytaichinh.database.DBHelper;
@@ -52,7 +51,7 @@ public class TransactionsDAOimpl implements ITransactionsDAO {
         contentValues.put(COLUMN_TRANSACTION_DATE, transaction.getTransactionDate().getTime());
         contentValues.put(COLUMN_TRANSACTION_NOTE, transaction.getTransactionNote());
         contentValues.put(COLUMN_TRANSACTION_CATEGORYID, transaction.getTransactionCategoryID().getCategoryID());
-        contentValues.put(COLUMN_TRANSACTION_WALLETID, transaction.getTrasactionWalletID().getWalletID());
+        contentValues.put(COLUMN_TRANSACTION_WALLETID, transaction.getTransactionWalletID().getWalletID());
 
         int id = (int) db.insert(TABLE_TRANSACTION_NAME, null, contentValues);
         db.close();
@@ -72,7 +71,7 @@ public class TransactionsDAOimpl implements ITransactionsDAO {
         contentValues.put(COLUMN_TRANSACTION_DATE, transaction.getTransactionDate().getTime());
         contentValues.put(COLUMN_TRANSACTION_NOTE, transaction.getTransactionNote());
         contentValues.put(COLUMN_TRANSACTION_CATEGORYID, transaction.getTransactionCategoryID().getCategoryID());
-        contentValues.put(COLUMN_TRANSACTION_WALLETID, transaction.getTrasactionWalletID().getWalletID());
+        contentValues.put(COLUMN_TRANSACTION_WALLETID, transaction.getTransactionWalletID().getWalletID());
 
         db.update(TABLE_TRANSACTION_NAME, contentValues, COLUMN_TRANSACTION_ID + " =? ", new String[]{String.valueOf(transaction
                 .getTransactionId())});
